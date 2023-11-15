@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
-import { getDigimonDetails } from "../../services/api";
-import styles from "./styles";
-import BackgroundImage from "../../components/BackgroundImage";
+import React, { useEffect, useState } from 'react';
+import { View, Text, Image, ScrollView } from 'react-native';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { getDigimonDetails } from '../../services/api';
+import { RootStackParamList } from '../../routes';
+import styles from './styles';
+import BackgroundImage from '../../components/BackgroundImage';
 
-export interface DigimonScreenProps {
-  route: { params: { idOrName: number | string } };
-}
+type DigimonScreenRouteProp = RouteProp<RootStackParamList, 'DigimonScreen'>;
 
-const DigimonScreen: React.FC<DigimonScreenProps> = ({ route }) => {
+const DigimonScreen: React.FC = () => {
+  const route = useRoute<DigimonScreenRouteProp>();
   const { idOrName } = route.params;
-  const [digimon, setDigimon] = useState<any>(null);
+  const [digimon, setDigimon] = useState<any | null>(null);
 
   useEffect(() => {
     getDigimonDetails(String(idOrName))

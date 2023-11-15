@@ -8,7 +8,7 @@ import BackgroundImage from "../../components/BackgroundImage";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 export type RootStackParamList = {
-  DigimonScreen: { idOrName: number | string } | undefined;
+  DigimonScreen: { idOrName: number | string }
 };
 
 const HomeScreen = () => {
