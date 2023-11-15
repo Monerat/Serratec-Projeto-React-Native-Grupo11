@@ -1,7 +1,7 @@
 // components/BackgroundImage.tsx
-import React from 'react';
-import { ImageBackground, StyleSheet } from 'react-native';
-import styles from './styles';
+import React from "react";
+import { ImageBackground, StyleSheet } from "react-native";
+import styles from "./styles";
 
 interface BackgroundImageProps {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ interface BackgroundImageProps {
 
 const BackgroundImage: React.FC<BackgroundImageProps> = ({ children }) => (
   <ImageBackground
-    source={require('../../assets/images/backgroundImage.png')}
+    source={require("../../assets/images/backgroundImage.png")}
     style={styles.backgroundImage}
   >
     {children}
