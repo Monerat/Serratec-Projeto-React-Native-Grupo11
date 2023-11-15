@@ -19,14 +19,14 @@ const DigimonScreen: React.FC = () => {
         setDigimon(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching Digimon details:", error);
+        console.error("Erro ao buscar as informações do Digimon:", error);
       });
   }, [idOrName]);
 
   if (!digimon) {
     return (
       <View style={styles.container}>
-        <Text>Loading...</Text>
+        <Text>Carregando...</Text>
       </View>
     );
   }
