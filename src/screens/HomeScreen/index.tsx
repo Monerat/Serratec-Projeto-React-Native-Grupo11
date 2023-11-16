@@ -1,45 +1,35 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { Searchbar, Button } from "react-native-paper";
-import { getDigimonDetails } from "../../services/api";
+import { Image, View, } from "react-native";
 import styles from "./styles";
 import BackgroundImage from "../../components/BackgroundImage";
-import { StackNavigationProp } from "@react-navigation/stack";
+import { Button } from "react-native-paper";
+import { getPokemon, Pokemon } from "../../services/api";
 
-export type RootStackParamList = {
-  DigimonScreen: { idOrName: number | string }
-};
 
 const HomeScreen = () => {
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [pokemon, setPokemon] = useState<Pokemon>()
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const handleSearch = async () => {
-    const response = await getDigimonDetails(searchQuery);
-    navigation.navigate("DigimonScreen", { idOrName: response.data.id });
-  };
+  function listMagicItemList() {
+    getPokemon(4)
+      .then(response => {
+        setPokemon(response.data);
+        console.log(pokemon?.stats[0].stat.name);
+      })
+      .catch(error => {
+        console.log(error.data);
+      }).finally(() => {
+        setIsLoading(false);
+      })
+  }
 
   return (
     <BackgroundImage>
       <View style={styles.container}>
-        <Image
-          source={require("../../assets/images/wizardmon.png")}
-          style={styles.image}
-        />
-        <Searchbar
-          placeholder="Pesquisar Digimon"
-          onChangeText={(query) => setSearchQuery(query)}
-          value={searchQuery}
-          style={styles.searchBar}
-        />
-        <Button
-          mode="contained"
-          onPress={handleSearch}
-          style={styles.searchButton}
-        >
-          Pesquisar
-        </Button>
+        <Button onPress={listMagicItemList}>pesquisar</Button>
+      </View>
+      <View>
+        <Image source={{ uri: pokemon?.sprites.other["official-artwork"].front_default }} style={{ width: "50%", height: "50%", resizeMode: "contain" }} />
       </View>
     </BackgroundImage>
   );

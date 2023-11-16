@@ -1,64 +1,41 @@
 import axios, { AxiosResponse } from "axios";
 
-const apiDigimon = axios.create({
-  baseURL: "https://digi-api.com/api/v1/",
+const apiPokemon = axios.create({
+  baseURL: "https://pokeapi.co/api/v2/",
 });
 
-interface Digimon {
+export interface Pokemon {
   id: number;
   name: string;
-  xAntibody: boolean;
-  images: { href: string; transparent: boolean }[];
-  levels: { id: number; level: string }[];
-  types: { id: number; type: string }[];
-  attributes: { id: number; attribute: string }[];
-  fields: { id: number; field: string; image: string }[];
-  origin: string;
-  language: string;
-  description: string;
-  skills: {
-    id: number;
-    skill: string;
-    translation: string;
-    description: string;
-  }[];
-  priorEvolutions: {
-    id: number;
-    digimon: string;
-    condition: string;
-    image: string;
-    url: string;
-  }[];
-  nextEvolutions: {
-    id: number;
-    digimon: string;
-    condition: string;
-    image: string;
-    url: string;
-  }[];
+  sprites: Sprites;
+  stats: PokemonStat[];
+  types: PokemonTypes[];
+
 }
 
-interface DigimonDetailsResponse extends AxiosResponse<Digimon, any> {}
-interface DigimonListResponse
-  extends AxiosResponse<{ count: number; results: Digimon[] }, any> {}
-
-export function getDigimonDetails(
-  idOrName: string
-): Promise<DigimonDetailsResponse> {
-  const url = `digimon/${idOrName}`;
-  return apiDigimon.get(url);
+interface PokemonStat {
+  base_stat: number;
+  stat: {
+    name: string;
+  }
 }
 
-export function getDigimonList(
-  name?: string,
-  attribute?: string,
-  xAntibody?: boolean,
-  level?: string,
-  page?: number,
-  pageSize?: number
-): Promise<DigimonListResponse> {
-  const url = "digimon";
-  const params = { name, attribute, xAntibody, level, page, pageSize };
+interface PokemonTypes {
+  id: number;
+  type: string
+}
 
-  return apiDigimon.get(url, { params });
+interface Sprites {
+  other: {
+    "official-artwork": {
+      front_default: string;
+    }
+  },
+}
+
+interface PokemonResponse extends AxiosResponse<Pokemon> { }
+
+export function getPokemon(id: number): Promise<PokemonResponse> {
+  const url = `pokemon/${id}`;
+  return apiPokemon.get(url)
 }

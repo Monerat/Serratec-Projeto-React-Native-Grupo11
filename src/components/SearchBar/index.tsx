@@ -15,7 +15,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   return (
     <View>
       <TextInput
-        placeholder="Digite o nome do Digimon"
+        placeholder="Digite o nome do Pokemon"
         value={searchTerm}
         onChangeText={setSearchTerm}
       />
