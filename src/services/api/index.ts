@@ -21,8 +21,9 @@ interface PokemonStat {
 }
 
 interface PokemonTypes {
-  id: number;
-  type: string
+  type: {
+    name: string;
+  }
 }
 
 interface Sprites {
