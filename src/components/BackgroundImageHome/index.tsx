@@ -1,14 +1,14 @@
-// components/BackgroundImage.tsx
+// components/BackgroundImageHome.tsx
 import React from "react";
 import { ImageBackground, StyleSheet } from "react-native";
 import styles from "./styles";
-import backgroundImg from "../../assets/images/backgroundImage.jpg"
+import backgroundImg from "../../assets/images/Home.gif"
 
-interface BackgroundImageProps {
+interface BackgroundImageHomeProps {
   children: React.ReactNode;
 }
 
-export const BackgroundImage: React.FC<BackgroundImageProps> = ({ children }) => (
+export const BackgroundImageHome: React.FC<BackgroundImageHomeProps> = ({ children }) => (
   <ImageBackground
     source={backgroundImg}
     style={styles.backgroundImage}

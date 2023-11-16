@@ -1,9 +1,7 @@
 
-const AboutScreen = () => {
+export const AboutScreen = () => {
       
     return (
       <></>
     );
   };
-  
-  export default AboutScreen;

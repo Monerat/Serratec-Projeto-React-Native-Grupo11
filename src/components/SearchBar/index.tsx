@@ -5,7 +5,7 @@ interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const handleSearch = () => {
@@ -23,5 +23,3 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     </View>
   );
 };
-
-export default SearchBar;

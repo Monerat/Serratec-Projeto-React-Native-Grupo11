@@ -1,38 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Image, View, } from "react-native";
 import styles from "./styles";
-import BackgroundImage from "../../components/BackgroundImage";
-import { Button } from "react-native-paper";
-import { getPokemon, Pokemon } from "../../services/api";
+import pokemonLogo from "../../assets/images/pokemon-logo-png-1421.png";
+import {BackgroundImageHome} from "../../components/BackgroundImageHome";
 
 
-const HomeScreen = () => {
-  const [pokemon, setPokemon] = useState<Pokemon>()
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  function listMagicItemList() {
-    getPokemon(4)
-      .then(response => {
-        setPokemon(response.data);
-        console.log(pokemon?.stats[0].stat.name);
-      })
-      .catch(error => {
-        console.log(error.data);
-      }).finally(() => {
-        setIsLoading(false);
-      })
-  }
-
+export const HomeScreen = () => {
+  
   return (
-    <BackgroundImage>
-      <View style={styles.container}>
-        <Button onPress={listMagicItemList}>pesquisar</Button>
-      </View>
-      <View>
-        <Image source={{ uri: pokemon?.sprites.other["official-artwork"].front_default }} style={{ width: "50%", height: "50%", resizeMode: "contain" }} />
-      </View>
-    </BackgroundImage>
+      <BackgroundImageHome>
+        <View style={styles.container}>
+          <Image source={pokemonLogo} style={styles.imageLogo}></Image>
+        </View>
+      </BackgroundImageHome>
   );
 };
-
-export default HomeScreen;

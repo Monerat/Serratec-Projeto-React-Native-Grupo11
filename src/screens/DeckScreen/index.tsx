@@ -1,8 +1,6 @@
-const DeckScreen = () => {
+export const DeckScreen = () => {
       
     return (
       <></>
     );
-  };
-  
-export default DeckScreen;
+};
