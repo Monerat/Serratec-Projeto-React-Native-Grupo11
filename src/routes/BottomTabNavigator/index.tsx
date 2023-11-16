@@ -2,6 +2,8 @@ import { HomeScreen } from '../../screens/HomeScreen';
 import { DeckScreen } from '../../screens/DeckScreen';
 import { CardScreen } from '../../screens/CardScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -26,7 +28,7 @@ export function BottomTabNavigator() {
       <Tab.Screen
         options={{
           tabBarIcon: ({ color }) => (
-            <></>
+            <Ionicons name="home" size={24} color={color} />
           )
         }}
         name="HomeScreen"
@@ -35,7 +37,7 @@ export function BottomTabNavigator() {
       <Tab.Screen
         options={{
           tabBarIcon: ({ color }) => (
-            <></>
+            <MaterialCommunityIcons name="cards" size={24} color={color} />
           )
         }}
         name="DeckScreen"
@@ -44,7 +46,7 @@ export function BottomTabNavigator() {
       <Tab.Screen
         options={{
           tabBarIcon: ({ color }) => (
-            <></>
+            <MaterialCommunityIcons name="pokeball" size={24} color={color} />
           )
         }}
         name="CardScreen"
