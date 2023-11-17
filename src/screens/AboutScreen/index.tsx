@@ -14,7 +14,7 @@ const data = [
     { id: '5', name: 'Joelson', github: 'https://github.com/joe-higashii' },
   ];
 
-const App = () => {
+const AboutScreen = () => {
 
     const handleGitHubClick = ({gitLink}:any) => { //coloquei esse any pq estava com erro
         Linking.openURL(gitLink);
@@ -52,4 +52,4 @@ const App = () => {
     </View>
   )
 }
-export default App;
+export default AboutScreen;
