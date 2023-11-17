@@ -15,7 +15,7 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={CardScreen} />
         <Stack.Screen name="CardScreen" component={CardScreen} />
       </Stack.Navigator>
     </NavigationContainer>
