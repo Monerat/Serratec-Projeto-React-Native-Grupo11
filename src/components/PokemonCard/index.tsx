@@ -6,21 +6,13 @@ import { BackgroundImage } from '../BackgroundImage';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
-SplashScreen.preventAutoHideAsync();
-
 interface PokemonCardProps {
   item: Pokemon;
 }
 
-
 export const PokemonCard = ({ item }: PokemonCardProps) => {
   const { id, name, sprites, stats, types } = item;
   
-  const [fontsLoaded, fontError] = useFonts({
-    'gillMedium': require('../../assets/fonts/GillSansMedium.otf'),
-    'gillBold': require('../../assets/fonts/GillSansCondensedBold.otf'),
-  });
-
   const corDoCardPeloType = (type?: string): string => {
     switch (type) {
       case "normal":
@@ -64,19 +56,9 @@ export const PokemonCard = ({ item }: PokemonCardProps) => {
     }
   };
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
-
-  if (!fontsLoaded && !fontError) {
-    return null;
-  }
-
   return (
     <View style={[styles.container, { backgroundColor: corDoCardPeloType(types[0].type.name) }]}>
-      <View style={styles.header} onLayout={onLayoutRootView}>
+      <View style={styles.header}>
         <Text style={styles.textPokemonName}>{name}</Text>
         <Text style={styles.textPokemonHp}>{stats[0].stat.name}</Text>
         <Text style={styles.textPokemonName}>{stats[0].base_stat}</Text>
