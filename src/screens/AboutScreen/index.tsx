@@ -23,8 +23,8 @@ const AboutScreen = () => {
     const renderItem = ({ item }: any ) => ( //coloquei esse any pq estava com erro
         <View style={styles.gitHub}>
             <View style={styles.creditos}>
-            <MaterialCommunityIcons name="pokeball" size={24} color="red" />
-            <Text>{item.name}</Text>
+              <MaterialCommunityIcons name="pokeball" size={24} color="red" />
+              <Text>{item.name}</Text>
             </View>
             <TouchableOpacity onPress={() => handleGitHubClick(item.github)}>
             <AntDesign name="github" size={24} color="black" />
@@ -34,10 +34,8 @@ const AboutScreen = () => {
 
   return (
     
-
     <View style={styles.container}>
-        <Image source={pokemon} style={styles.imagePokemon}/>
-        
+        <Image source={pokemon} style={styles.imagePokemon}/>        
         <View style={styles.boddy}>
             <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit itaque repudiandae tenetur beatae, praesentium consectetur libero accusantium, sunt neque nobis adipisci. Totam aliquam aut qui. Doloribus cumque sapiente reprehenderit aperiam quod. Earum quas excepturi sit, corporis quaerat provident doloribus rerum, aperiam amet maxime molestiae.  modi maiores adipisci corrupti ex ratione aspernatur quo rem cum saepe quia quos, voluptatum ab, deleniti error animi architecto temporibus non maxime eum.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, quo labore natus corporis nemo architecto at pariatur exercitationem, mollitia impedit distinctio recusandae blanditiis ex vero iure, tempore unde suscipit veritatis tenetur optio ab corrupti. Dolores reprehenderit commodi quo excepturi esse officiis facilis ipsa iusto laboriosam deserunt sed cumque vel id temporibus ipsam dolorem adipisci quos dolorum laborum aliquid, quia vitae sunt modi alias. Quo necessitatibus dicta blanditiis nostrum ratione delectus distinctio eos harum, dolorem, accusantium dolore inventore porro natus velit optio ullam quisquam provident temporibus. Placeat tenetur quod id corporis nihil, ex similique amet eius iste magni et sint maxime?</Text>
         </View>
