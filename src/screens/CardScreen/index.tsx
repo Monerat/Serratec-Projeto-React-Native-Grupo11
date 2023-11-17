@@ -87,19 +87,20 @@ export const CardScreen = () => {
   }
 
   return (
-    <BackgroundImage>
+    <>
       <View style={{
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: "center",
         padding: 16
       }}>
+        
+      </View>
+      <View style={{ width: "100%", height: "100%", alignItems: 'center', justifyContent:'center' }}>
+        <PokemonCard item={pokemon}></PokemonCard>
         <Button onPress={handleClick}>TESTE BUTTON</Button>
       </View>
-      <View style={{ width: "50%", height: "50%" }}>
-        <PokemonCard item={pokemon}></PokemonCard>
-      </View>
 
-    </BackgroundImage>
+    </>
   );
 };

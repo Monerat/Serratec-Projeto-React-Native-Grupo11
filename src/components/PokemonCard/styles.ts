@@ -1,76 +1,89 @@
 import { StyleSheet } from 'react-native'
+import { RFValue } from "react-native-responsive-fontsize";
 
 export const styles = StyleSheet.create({
     container: {
         justifyContent: "flex-start",
-        width: "100%",
-        height: "100%",
+        width: "90%",
+        height: "90%",
         borderWidth: 15,
-        borderColor: "#ffff6d",
-        padding: 20
+        borderColor: "#fbd803",
+        padding: 20,
+        borderRadius: 10,
+
     },
     header: {
         flexDirection: "row",
-        padding: 10
+        justifyContent: 'space-between'
+    },
+    textPokemonName: {
+        textTransform: 'capitalize',
+        fontSize: RFValue(30),
+        resizeMode: 'contain'
+    },
+    containerHp: {
+        flexDirection: 'row',
+        alignItems:'baseline'
+    },
+    textPokemonHp: {
+        textTransform: 'uppercase',
+        resizeMode: 'contain'
+    },
+    textPokemonNumber: {
+        fontSize: RFValue(30),
+        resizeMode: 'contain'
     },
     containerPokemon: {
         borderWidth: 5,
         borderColor: "#707070",
         width: "100%",
-        height: "50%"
+        height: "50%",
+        justifyContent: 'center',
     },
     imgPokemon: {
-        width: 200,
-        height: 200,
-        margin: 40,
-        marginLeft: "25%",
+        alignSelf: 'center',
+        width: "100%",
+        height: "100%",        
+        resizeMode: 'contain'
 
     },
-    imgBackground: {
-        width: "100%",
-        height: "60%",
-    },
-    textPokemonName: {
-        fontSize: 30,
-        fontWeight: "bold",
-        fontFamily: "gillMedium"
-    },
-    textPokemonHp: {
-        fontSize: 20,
-        paddingLeft: "30%",
-        paddingTop: 10,
-        fontWeight: "bold"
-    },
-    textPokemonType: {
-        fontSize: 25,
-        paddingLeft: "8%",
-        fontWeight: "bold"
-    },
+    
     containerHabilidades: {
         alignItems: "flex-start",
-        padding: 20,
         width: "98%",
-        marginTop: 10,
-        marginLeft: 5,
-        backgroundColor: "#fff"
-    },
-    textHabilidades: {
-        fontSize: 20,
-        fontWeight: "bold",
-
+        paddingTop: "4%"
     },
     containerSkill: {
         flexDirection: "row",
         width: "100%",
-        paddingTop: 5,
-        paddingBottom: 5,
         justifyContent: "space-between",
-
+        borderBottomWidth:1,
+        borderBottomColor:"black",
+        resizeMode: 'contain',
     },
+    containerText:{
+        flexDirection: 'row',
+    },
+    textHabilidades: {
+        fontSize: RFValue(20),
+        paddingLeft: '2%',
+        resizeMode: 'contain'
+    },
+    
     valor: {
-        paddingLeft: 80,
-        fontWeight: "bold",
-        fontSize: 15,
+        fontSize: RFValue(25),
+        resizeMode: 'contain'
+    },
+    containerType:{
+        height:"12%",
+        width: "100%",
+        resizeMode: 'contain',
+        justifyContent:'flex-end'
+    },
 
-    }
+    textPokemonType: {
+        fontSize: RFValue(30),
+        textTransform: 'capitalize',
+        resizeMode: 'contain'
+    },
 })

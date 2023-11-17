@@ -2,7 +2,7 @@
 import React from "react";
 import { ImageBackground, StyleSheet } from "react-native";
 import styles from "./styles";
-import backgroundImg from "../../assets/images/backgroundImage.jpg"
+import backgroundImg from "../../assets/images/backgroundForest.png"
 
 interface BackgroundImageProps {
   children: React.ReactNode;
