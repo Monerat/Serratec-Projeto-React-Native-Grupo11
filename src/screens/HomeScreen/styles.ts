@@ -11,7 +11,16 @@ const styles = StyleSheet.create({
       height: 200,
       width: "100%",
     },
-    
+    imagePokeball: {
+      height: 100,
+      width: 100,
+    },
+    pokeballContainer: {
+      height: 400,
+      width:"100%",
+      justifyContent: 'center',
+      alignItems: "center",
+    }
   });
 
 export default styles;
