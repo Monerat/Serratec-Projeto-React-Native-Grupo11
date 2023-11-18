@@ -2,7 +2,8 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     backgroundImage: {
-      resizeMode: 'contain',
+      resizeMode: 'cover',
+      flex: 1, 
     },
   });
 
