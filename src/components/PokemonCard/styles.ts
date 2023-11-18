@@ -11,6 +11,17 @@ export const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 10,
     },
+    prismaticColor: {
+        justifyContent: "flex-start",
+        width: "90%",
+        height: "90%",
+        borderWidth: 15,
+        borderColor: "#fbd803",
+        padding: 20,
+        borderRadius: 10,
+        backgroundColor: 'linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red)',
+        animation: 'colorChange 5s ease infinite',
+    },
     header: {
         flexDirection: "row",
         justifyContent: 'space-between'

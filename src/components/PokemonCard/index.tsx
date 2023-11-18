@@ -28,6 +28,8 @@ import elementPoison from '../../assets/images/ElementPoison.png'
 import elementPsychic from '../../assets/images/ElementPsychic.png'
 import elementRock from '../../assets/images/ElementRock.png'
 import elementToxic from '../../assets/images/ElementToxic.png'
+import { LinearGradient } from 'expo-linear-gradient';
+import { transparent } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 interface PokemonCardProps {
   item: Pokemon;
@@ -86,13 +88,9 @@ export const PokemonCard = ({ item }: PokemonCardProps) => {
       default:
         return "#ffffff";
     }
-  }; 
+  };   
   
-  const pokemonType = ({types}) => {
-    const backgroundImg = imageDoCardPeloType(types[0].type.name)
-  
-  
-  const barraType = (type?: string): string => {
+  const barraType = (type?: string) => {
     switch (type) {
       case "normal":
         return elementNormal;
@@ -134,9 +132,10 @@ export const PokemonCard = ({ item }: PokemonCardProps) => {
         return elementNormal
     }
   };
-
+  const styleDynamic = Math.random() < 0.5 ? styles.container : styles.prismaticColor
   return (
-    <View style={[styles.container, { backgroundColor: corDoCardPeloType(types[0].type.name) }]}>
+    <View style={[styleDynamic, { backgroundColor: corDoCardPeloType(types[0].type.name) }]}>
+      <LinearGradient colors={["#2790F0", "#9D53B2","transparent"]}>
       <View style={styles.header}>
         <Text style={[styles.textPokemonName, {fontFamily: 'gillBold'}]}>{name}</Text>
         <View style={styles.containerHp}>
@@ -195,8 +194,8 @@ export const PokemonCard = ({ item }: PokemonCardProps) => {
       </View>
       <View style={styles.containerType}>
         {/* <Text style={[styles.textPokemonType, {fontFamily: 'gillBold'}]}>{types[0].type.name}</Text> */}
-        <Image source={barraType(types[0].type.name)} />
+        <Image style={{width:"100%", height:"100%"}} source={barraType(types[0].type.name)} />
       </View>
+      </LinearGradient>
     </View>
   )}
-};
