@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
         borderColor: "#fbd803",
         padding: 20,
         borderRadius: 10,
-
     },
     header: {
         flexDirection: "row",
@@ -75,10 +74,11 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     containerType:{
-        height:"12%",
+        height:"20%",
         width: "100%",
         resizeMode: 'contain',
-        justifyContent:'flex-end'
+        justifyContent:'flex-end',
+        
     },
 
     textPokemonType: {

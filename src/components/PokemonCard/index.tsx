@@ -9,11 +9,29 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import elementFire from '../../assets/images/ElementFire.png'
+import elementWater from '../../assets/images/ElementWater.png'
+import elementBug from '../../assets/images/ElementBug.png'
+import elementDark from '../../assets/images/ElementDark.png'
+import elementDragon from '../../assets/images/ElementDragon.png'
+import elementEletric from '../../assets/images/ElementEletric.png'
+import elementFairy from '../../assets/images/ElementFary.png'
+import elementFight from '../../assets/images/ElementFight.png'
+import elementFly from '../../assets/images/ElementFlying.png'
+import elementGhost from '../../assets/images/ElementGhost.png'
+import elementGrass from '../../assets/images/ElementGrass.png'
+import elementGround from '../../assets/images/ElementGround.png'
+import elementIce from '../../assets/images/ElementIce.png'
+import elementSteel from '../../assets/images/ElementMetal.png'
+import elementNormal from '../../assets/images/ElementNormal.png'
+import elementPoison from '../../assets/images/ElementPoison.png'
+import elementPsychic from '../../assets/images/ElementPsychic.png'
+import elementRock from '../../assets/images/ElementRock.png'
+import elementToxic from '../../assets/images/ElementToxic.png'
 
 interface PokemonCardProps {
   item: Pokemon;
 }
-
 
 export const PokemonCard = ({ item }: PokemonCardProps) => {
   const { id, name, sprites, stats, types } = item;
@@ -68,6 +86,53 @@ export const PokemonCard = ({ item }: PokemonCardProps) => {
       default:
         return "#ffffff";
     }
+  }; 
+  
+  const pokemonType = ({types}) => {
+    const backgroundImg = imageDoCardPeloType(types[0].type.name)
+  
+  
+  const barraType = (type?: string): string => {
+    switch (type) {
+      case "normal":
+        return elementNormal;
+      case "fire":
+        return elementFire;
+      case "water":
+        return elementWater;
+      case "grass":
+        return elementGrass;
+      case "flying":
+        return elementFly;
+      case "fighting":
+        return elementFight;
+      case "poison":
+        return elementPoison;
+      case "electric":
+        return elementEletric;
+      case "ground":
+        return elementWater;
+      case "rock":
+        return elementRock;
+      case "psychic":
+        return elementPsychic;
+      case "ice":
+        return elementIce;
+      case "bug":
+        return elementBug;
+      case "ghost":
+        return elementGhost;
+      case "steel":
+        return elementSteel;
+      case "dragon":
+        return elementDragon;
+      case "dark":
+        return elementDark;
+      case "fairy":
+        return elementFairy;
+      default:
+        return elementNormal
+    }
   };
 
   return (
@@ -107,7 +172,7 @@ export const PokemonCard = ({ item }: PokemonCardProps) => {
         <View style={styles.containerSkill}>
           <View style={styles.containerText}>
             <FontAwesome5 name="firefox" size={24} color="black" />
-            <Text style={[styles.textHabilidades, {fontFamily: 'gillBold'}]}>Ataque Especial</Text>
+            <Text  style={[styles.textHabilidades, {fontFamily: 'gillBold'}]}>Ataque Especial</Text>
           </View>
           <Text style={[styles.valor, {fontFamily: 'gillMedium'}]}>{stats[3].base_stat}</Text>
         </View>
@@ -129,8 +194,9 @@ export const PokemonCard = ({ item }: PokemonCardProps) => {
         </View>
       </View>
       <View style={styles.containerType}>
-        <Text style={[styles.textPokemonType, {fontFamily: 'gillBold'}]}>{types[0].type.name}</Text>
+        {/* <Text style={[styles.textPokemonType, {fontFamily: 'gillBold'}]}>{types[0].type.name}</Text> */}
+        <Image source={barraType(types[0].type.name)} />
       </View>
     </View>
-  )
-}
+  )}
+};
