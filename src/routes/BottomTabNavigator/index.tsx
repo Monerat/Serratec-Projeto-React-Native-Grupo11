@@ -3,7 +3,8 @@ import { DeckScreen } from '../../screens/DeckScreen';
 import { CardScreen } from '../../screens/CardScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
+import { AboutScreen } from '../../screens/AboutScreen'
 
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -12,6 +13,7 @@ export type RootTabParamList = {
   HomeScreen: {};
   DeckScreen: {};
   CardScreen: {};
+  AboutScreen:{};
 }
 
 export function BottomTabNavigator() {
@@ -51,6 +53,15 @@ export function BottomTabNavigator() {
         }}
         name="CardScreen"
         component={CardScreen}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ color }) => (
+            <FontAwesome5 name="question" size={20} color='#E04A49' /> 
+          )
+        }}
+        name="AboutScreen"
+        component={AboutScreen}
       />
     </Tab.Navigator>
   );
