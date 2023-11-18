@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 import { AboutScreen } from '../../screens/AboutScreen'
+import StackNavigator from '../BottomStackNavigator';
 
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -57,11 +58,11 @@ export function BottomTabNavigator() {
       <Tab.Screen
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="question" size={20} color='#E04A49' /> 
+            <FontAwesome5 name="question" size={20} color={color} /> 
           )
         }}
         name="AboutScreen"
-        component={AboutScreen}
+        component={StackNavigator}
       />
     </Tab.Navigator>
   );
