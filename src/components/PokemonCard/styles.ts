@@ -2,10 +2,31 @@ import { StyleSheet } from 'react-native'
 import { RFValue } from "react-native-responsive-fontsize";
 
 export const styles = StyleSheet.create({
+    modal: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: '#12100055'
+    },
+	modalContainer: {
+        backgroundColor: '#121000',
+        borderRadius: 20,
+        alignItems: "flex-start",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+        width: "80%",
+        maxHeight: "80%",
+    },
     container: {
         justifyContent: "flex-start",
-        width: "90%",
-        height: "90%",
+        width: "100%",
+        height: "100%",
         borderWidth: 15,
         borderColor: "#fbd803",
         padding: 20,
@@ -68,7 +89,6 @@ export const styles = StyleSheet.create({
     
     valor: {
         fontSize: RFValue(25),
-        resizeMode: 'contain'
     },
     containerType:{
         height:"12%",

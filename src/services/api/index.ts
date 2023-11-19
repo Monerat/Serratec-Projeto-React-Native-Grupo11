@@ -34,7 +34,26 @@ interface Sprites {
   },
 }
 
+interface PokemonList {
+  count: number;
+  next: string;
+  previous: string;
+  results: Results[];
+}
+
+interface Results {
+  name: string;
+  url: string;
+}
+
 interface PokemonResponse extends AxiosResponse<Pokemon> { }
+
+interface PokemonListResponse extends AxiosResponse<PokemonList> { }
+
+export function getAllPokemons(): Promise<PokemonListResponse> {
+  const url = "pokemon";
+  return apiPokemon.get(url)
+}
 
 export function getPokemon(id: number): Promise<PokemonResponse> {
   const url = `pokemon/${id}`;
