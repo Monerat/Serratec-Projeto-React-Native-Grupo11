@@ -15,10 +15,6 @@ export interface PokemonProps {
 
 export const PokemonList = ({ item, setIsModalVisible, setSelectedItem }: PokemonProps) => {
 
-	const handlePokemonPress = () => {
-        console.log(item);
-    };
-
 	function abrirModal () {
 		setSelectedItem(item);
 		setIsModalVisible(true);

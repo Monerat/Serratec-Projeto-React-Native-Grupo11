@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Pokemon, getPokemon } from "../../services/api";
-import { View, Image, Text, Modal, ActivityIndicator, } from 'react-native';
+import { View, Image, Text, Modal, ActivityIndicator, Button, } from 'react-native';
 import { styles } from "../PokemonCard/styles"
 import { BackgroundImage } from '../BackgroundImage';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -9,15 +9,18 @@ import AppLoading from 'expo-app-loading'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { PokemonListProps } from '../PokemonList';
+import { DeckContext } from '../../context/DeckContext';
+
 
 interface PokemonCardProps {
   item: PokemonListProps;
   isModalVisible: boolean;
+  deck: boolean;
   setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 
-export const PokemonCard = ({ isModalVisible, setIsModalVisible, item }: PokemonCardProps) => {
+export const PokemonCard = ({ isModalVisible, setIsModalVisible, item, deck }: PokemonCardProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { name, url } = item;
   
@@ -85,6 +88,8 @@ export const PokemonCard = ({ isModalVisible, setIsModalVisible, item }: Pokemon
     ],
   });
 
+  const { addCardToDeck, removeCardFromDeck } = useContext(DeckContext);
+
   useEffect(() => {
     getPokemonDetails(url)
   }, []);
@@ -106,6 +111,16 @@ export const PokemonCard = ({ isModalVisible, setIsModalVisible, item }: Pokemon
         setIsLoading(false);
       });
   }
+
+  function handleButton() {
+		if (deck) {
+			removeCardFromDeck(pokemon.id);
+			setIsModalVisible(false);
+		} else {
+			addCardToDeck(pokemon);
+			setIsModalVisible(false);
+		}
+	}
 
   const [fontsLoaded] = useFonts({
     'gillMedium': require('../../assets/fonts/GillSansMedium.otf'),
@@ -241,6 +256,8 @@ export const PokemonCard = ({ isModalVisible, setIsModalVisible, item }: Pokemon
           }
         </View>
       </View>
+      <Button title={deck ? "Remover do Deck" : "Adicionar ao Deck"} onPress={handleButton}/>
     </Modal>
+    
   )
 }

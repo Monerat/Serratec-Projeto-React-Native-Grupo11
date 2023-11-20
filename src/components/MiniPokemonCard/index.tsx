@@ -1,6 +1,6 @@
-import React from 'react'
-import {  Pokemon } from "../../services/api";
-import { View, Image, Text, } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react'
+import { Pokemon, getPokemon } from "../../services/api";
+import { View, Image, Text } from 'react-native';
 import { styles } from "../MiniPokemonCard/styles"
 import { BackgroundImage } from '../BackgroundImage';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -8,22 +8,122 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { DeckContext } from '../../context/DeckContext';
+
 
 interface PokemonCardProps {
-  item: Pokemon;
+  id: number;
+  isModalVisible: boolean;
+  deck: boolean;
+  setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 
-export const MiniPokemonCard = ({ item }: PokemonCardProps) => {
-  const { id, name, sprites, stats, types } = item;
-  
+export const MiniPokemonCard = ({ isModalVisible, setIsModalVisible, id, deck }: PokemonCardProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const [pokemon, setPokemon] = useState<Pokemon>({
+    id: 0,
+    name: "",
+    sprites: {
+      other: {
+        "official-artwork": {
+          front_default: "",
+        }
+      }
+    },
+    stats: [
+      {
+        base_stat: 0,
+        stat: {
+          name: "",
+        }
+      },
+      {
+        base_stat: 0,
+        stat: {
+          name: "",
+
+        }
+      },
+      {
+        base_stat: 0,
+        stat: {
+          name: "",
+
+        }
+      },
+      {
+        base_stat: 0,
+        stat: {
+          name: "",
+        }
+      },
+      {
+        base_stat: 0,
+        stat: {
+          name: "",
+        }
+      },
+      {
+        base_stat: 0,
+        stat: {
+          name: "",
+        }
+      }
+    ],
+    types: [
+      {
+        type: {
+          name: "",
+        }
+      },
+      {
+        type: {
+          name: "",
+        }
+      }
+    ],
+  });
+
+  const { addCardToDeck, removeCardFromDeck } = useContext(DeckContext);
+
+  useEffect(() => {
+    getPokemonDetails(id)
+  }, []);
+
+  function getPokemonDetails(id: number) {
+
+    getPokemon(id)
+      .then(response => {
+        setPokemon(response.data);
+
+      })
+      .catch(error => {
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
+
+  function handleButton() {
+    if (deck) {
+      removeCardFromDeck(pokemon.id);
+      setIsModalVisible(false);
+    } else {
+      addCardToDeck(pokemon);
+      setIsModalVisible(false);
+    }
+  }
+
   const [fontsLoaded] = useFonts({
     'gillMedium': require('../../assets/fonts/GillSansMedium.otf'),
     'gillBold': require('../../assets/fonts/GillSansCondensedBold.otf'),
   });
 
-  if (!fontsLoaded){
-    return <AppLoading/>;
+  if (!fontsLoaded) {
+    return <AppLoading />;
   }
 
   const corDoCardPeloType = (type?: string): string => {
@@ -70,66 +170,69 @@ export const MiniPokemonCard = ({ item }: PokemonCardProps) => {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: corDoCardPeloType(types[0].type.name) }]}>
+    <View style={[styles.container, { backgroundColor: corDoCardPeloType(pokemon.types[0].type.name) }]}>
       <View style={styles.header}>
-        <Text style={[styles.textPokemonName, {fontFamily: 'gillBold'}]}>{name}</Text>
+        <Text style={[styles.textPokemonName, { fontFamily: 'gillBold' }]}>{pokemon.name}</Text>
         <View style={styles.containerHp}>
-          <Text style={[styles.textPokemonHp, {fontFamily: 'gillBold'}]}>{stats[0].stat.name}</Text>
-          <Text style={[styles.textPokemonNumber, {fontFamily: 'gillBold'}]}>{stats[0].base_stat}</Text>
+          <Text style={[styles.textPokemonHp, { fontFamily: 'gillBold' }]}>{pokemon.stats[0].stat.name}</Text>
+          <Text style={[styles.textPokemonNumber, { fontFamily: 'gillBold' }]}>{pokemon.stats[0].base_stat}</Text>
         </View>
       </View>
 
       <View style={styles.containerPokemon}>
-      <BackgroundImage pokemonType={types[0].type.name} >
-          <Image source={{ uri: sprites.other["official-artwork"].front_default }} style={styles.imgPokemon} />
+        <BackgroundImage pokemonType={pokemon.types[0].type.name} >
+          <Image source={{ uri: pokemon.sprites.other["official-artwork"].front_default }} style={styles.imgPokemon} />
         </BackgroundImage>
       </View>
 
       <View style={styles.containerHabilidades}>
-        
+
         <View style={styles.containerSkill}>
           <View style={styles.containerText}>
             <MaterialCommunityIcons name="sword" size={10} color="black" />
-            <Text style={[styles.textHabilidades, {fontFamily: 'gillBold'}]}>Ataque</Text>
+            <Text style={[styles.textHabilidades, { fontFamily: 'gillBold' }]}>Ataque</Text>
           </View>
-          <Text style={[styles.valor, {fontFamily: 'gillMedium'}]}>{stats[1].base_stat}</Text>
+          <Text style={[styles.valor, { fontFamily: 'gillMedium' }]}>{pokemon.stats[1].base_stat}</Text>
         </View>
-        
+
         <View style={styles.containerSkill}>
           <View style={styles.containerText}>
             <MaterialIcons name="shield" size={10} color="black" />
-            <Text style={[styles.textHabilidades, {fontFamily: 'gillBold'}]}>Defesa</Text>
+            <Text style={[styles.textHabilidades, { fontFamily: 'gillBold' }]}>Defesa</Text>
           </View>
-          <Text style={[styles.valor, {fontFamily: 'gillMedium'}]}>{stats[2].base_stat}</Text>
+          <Text style={[styles.valor, { fontFamily: 'gillMedium' }]}>{pokemon.stats[2].base_stat}</Text>
         </View>
 
         <View style={styles.containerSkill}>
           <View style={styles.containerText}>
             <FontAwesome5 name="firefox" size={10} color="black" />
-            <Text style={[styles.textHabilidades, {fontFamily: 'gillBold'}]}>Ataque Especial</Text>
+            <Text style={[styles.textHabilidades, { fontFamily: 'gillBold' }]}>Ataque Especial</Text>
           </View>
-          <Text style={[styles.valor, {fontFamily: 'gillMedium'}]}>{stats[3].base_stat}</Text>
+          <Text style={[styles.valor, { fontFamily: 'gillMedium' }]}>{pokemon.stats[3].base_stat}</Text>
         </View>
 
         <View style={styles.containerSkill}>
           <View style={styles.containerText}>
             <MaterialCommunityIcons name="shield-sun" size={10} color="black" />
-            <Text style={[styles.textHabilidades, {fontFamily: 'gillBold'}]}>Defesa Especial</Text>
+            <Text style={[styles.textHabilidades, { fontFamily: 'gillBold' }]}>Defesa Especial</Text>
           </View>
-          <Text style={[styles.valor, {fontFamily: 'gillMedium'}]}>{stats[4].base_stat}</Text>
+          <Text style={[styles.valor, { fontFamily: 'gillMedium' }]}>{pokemon.stats[4].base_stat}</Text>
         </View>
 
         <View style={styles.containerSkill}>
           <View style={styles.containerText}>
             <MaterialIcons name="speed" size={10} color="black" />
-            <Text style={[styles.textHabilidades, {fontFamily: 'gillBold'}]}>Agilidade</Text>
+            <Text style={[styles.textHabilidades, { fontFamily: 'gillBold' }]}>Agilidade</Text>
           </View>
-          <Text style={[styles.valor, {fontFamily: 'gillMedium'}]}>{stats[5].base_stat}</Text>
+          <Text style={[styles.valor, { fontFamily: 'gillMedium' }]}>{pokemon.stats[5].base_stat}</Text>
         </View>
       </View>
       <View style={styles.containerType}>
-        <Text style={[styles.textPokemonType, {fontFamily: 'gillBold'}]}>{types[0].type.name}</Text>
+        <Text style={[styles.textPokemonType, { fontFamily: 'gillBold' }]}>{pokemon.types[0].type.name}</Text>
       </View>
     </View>
+
+
+
   )
 }

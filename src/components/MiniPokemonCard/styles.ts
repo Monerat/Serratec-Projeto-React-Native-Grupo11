@@ -4,8 +4,8 @@ import { RFValue } from "react-native-responsive-fontsize";
 export const styles = StyleSheet.create({
     container: {
         justifyContent: "flex-start",
-        width: "90%",
-        height: "90%",
+        width: "100%",
+        height: "100%",
         borderWidth: 15,
         borderColor: "#fbd803",
         padding: 20,

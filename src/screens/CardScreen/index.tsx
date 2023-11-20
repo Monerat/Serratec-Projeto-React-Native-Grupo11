@@ -52,7 +52,7 @@ export const CardScreen = () => {
             }}
           />
       }
-      {isModalVisible && <PokemonCard isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} item={selectedItem} />}
+      {isModalVisible && <PokemonCard isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} item={selectedItem} deck={false} />}
     </View>
   );
 };

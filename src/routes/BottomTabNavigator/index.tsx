@@ -5,13 +5,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 import { AboutScreen } from '../../screens/AboutScreen'
+import { DeckProvider } from '../../context/DeckContext';
 
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
 export type RootTabParamList = {
   HomeScreen: {};
-  DeckScreen: {};
+  DeckScreen: { id: string };
   CardScreen: {};
   AboutScreen:{};
 }
