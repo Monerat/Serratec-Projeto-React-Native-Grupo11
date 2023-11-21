@@ -27,6 +27,7 @@ interface BackgroundImageProps {
 }
 
 const switchBackgroundImg = (pokemonType?: string) => {
+  
   switch (pokemonType) {
     case "normal":
       return backgroundNormal;

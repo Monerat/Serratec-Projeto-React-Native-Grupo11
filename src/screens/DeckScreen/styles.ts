@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  headerContainer: {
+    alignItems: 'center',
+  },
 
   viewText: {
     alignItems: 'center',
@@ -28,12 +31,11 @@ export const styles = StyleSheet.create({
     width: "50%",  
   },
 
-  container: {
-    alignItems: 'center',
+  deckContainer: {
+    height: "70%",
+    width: "50%",  
   },
-
   flatListContainer: {
-    flexGrow: 1,
-  },
-
+    flexGrow: 1
+  }
 });

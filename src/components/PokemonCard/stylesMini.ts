@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import { RFValue } from "react-native-responsive-fontsize";
 
-export const styles = StyleSheet.create({
+export const stylesMini = StyleSheet.create({
     container: {
         justifyContent: "flex-start",
         width: "100%",
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     textPokemonName: {
         textTransform: 'capitalize',
         fontSize: RFValue(10),
-        resizeMode: 'contain'
+        
     },
     containerHp: {
         flexDirection: 'row',
@@ -27,11 +27,10 @@ export const styles = StyleSheet.create({
     },
     textPokemonHp: {
         textTransform: 'uppercase',
-        resizeMode: 'contain'
+       
     },
     textPokemonNumber: {
         fontSize: RFValue(10),
-        resizeMode: 'contain'
     },
     containerPokemon: {
         borderWidth: 5,
@@ -67,7 +66,6 @@ export const styles = StyleSheet.create({
     textHabilidades: {
         fontSize: RFValue(10),
         paddingLeft: '2%',
-        resizeMode: 'contain'
     },
     
     valor: {
@@ -84,6 +82,5 @@ export const styles = StyleSheet.create({
     textPokemonType: {
         fontSize: RFValue(10),
         textTransform: 'capitalize',
-        resizeMode: 'contain'
     },
 })

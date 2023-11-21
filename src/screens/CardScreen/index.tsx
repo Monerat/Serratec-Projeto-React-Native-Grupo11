@@ -1,10 +1,9 @@
-import { Text, ActivityIndicator, FlatList, TouchableOpacity, View } from "react-native";
-import { PokemonCard } from "../../components/PokemonCard";
-import { SetStateAction, useEffect, useState } from "react";
-import { Pokemon, getAllPokemons, getPokemon } from "../../services/api";
-
+import { Text, ActivityIndicator, FlatList, View } from "react-native";
+import { useEffect, useState } from "react";
+import { getAllPokemons } from "../../services/api";
 import { PokemonList, PokemonListProps } from "../../components/PokemonList";
 import { styles } from "./styles";
+import { ModalPokemonCard } from "../../components/Modal/ModalPokemonCard";
 
 export const CardScreen = () => {
   const [pokemonList, setPokemonList] = useState<PokemonListProps[]>([]);
@@ -42,6 +41,7 @@ export const CardScreen = () => {
             color={'#156'}
           />
           :
+          //lazyLoad
           <FlatList
             data={pokemonList}
             renderItem={({ item }) => {
@@ -52,7 +52,7 @@ export const CardScreen = () => {
             }}
           />
       }
-      {isModalVisible && <PokemonCard isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} item={selectedItem} deck={false} />}
+      {isModalVisible && <ModalPokemonCard isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} item={selectedItem} deck={false} />}
     </View>
   );
 };
