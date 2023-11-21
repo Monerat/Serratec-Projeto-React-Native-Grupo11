@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Pokemon, getPokemon } from "../../services/api";
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { styles } from "../MiniPokemonCard/styles"
 import { BackgroundImage } from '../BackgroundImage';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -9,6 +9,8 @@ import AppLoading from 'expo-app-loading'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { DeckContext } from '../../context/DeckContext';
+import { PokemonCard } from '../PokemonCard';
+import { PokemonListProps } from '../PokemonList';
 
 
 interface PokemonCardProps {
@@ -16,12 +18,12 @@ interface PokemonCardProps {
   isModalVisible: boolean;
   deck: boolean;
   setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedItem: React.Dispatch<React.SetStateAction<PokemonListProps>>;
 }
 
 
-export const MiniPokemonCard = ({ isModalVisible, setIsModalVisible, id, deck }: PokemonCardProps) => {
+export const MiniPokemonCard = ({ isModalVisible, setIsModalVisible, id, deck, setSelectedItem }: PokemonCardProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
   const [pokemon, setPokemon] = useState<Pokemon>({
     id: 0,
     name: "",
@@ -107,16 +109,6 @@ export const MiniPokemonCard = ({ isModalVisible, setIsModalVisible, id, deck }:
       });
   }
 
-  function handleButton() {
-    if (deck) {
-      removeCardFromDeck(pokemon.id);
-      setIsModalVisible(false);
-    } else {
-      addCardToDeck(pokemon);
-      setIsModalVisible(false);
-    }
-  }
-
   const [fontsLoaded] = useFonts({
     'gillMedium': require('../../assets/fonts/GillSansMedium.otf'),
     'gillBold': require('../../assets/fonts/GillSansCondensedBold.otf'),
@@ -169,8 +161,16 @@ export const MiniPokemonCard = ({ isModalVisible, setIsModalVisible, id, deck }:
     }
   };
 
+  function abrirModal() {
+    setSelectedItem({
+      name: pokemon.name,
+      url: 'https://pokeapi.co/api/v2/pokemon/'+pokemon.id
+  });
+    setIsModalVisible(true);
+  }
+
   return (
-    <View style={[styles.container, { backgroundColor: corDoCardPeloType(pokemon.types[0].type.name) }]}>
+    <TouchableOpacity onPress={abrirModal} style={[styles.container, { backgroundColor: corDoCardPeloType(pokemon.types[0].type.name) }]}>
       <View style={styles.header}>
         <Text style={[styles.textPokemonName, { fontFamily: 'gillBold' }]}>{pokemon.name}</Text>
         <View style={styles.containerHp}>
@@ -230,9 +230,6 @@ export const MiniPokemonCard = ({ isModalVisible, setIsModalVisible, id, deck }:
       <View style={styles.containerType}>
         <Text style={[styles.textPokemonType, { fontFamily: 'gillBold' }]}>{pokemon.types[0].type.name}</Text>
       </View>
-    </View>
-
-
-
+    </TouchableOpacity>
   )
 }

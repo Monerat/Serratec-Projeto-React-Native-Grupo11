@@ -23,7 +23,6 @@ interface PokemonCardProps {
 export const PokemonCard = ({ isModalVisible, setIsModalVisible, item, deck }: PokemonCardProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { name, url } = item;
-  
   const [pokemon, setPokemon] = useState<Pokemon>({
     id: 0,
     name: "",

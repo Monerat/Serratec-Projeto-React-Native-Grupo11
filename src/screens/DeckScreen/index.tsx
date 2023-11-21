@@ -7,6 +7,8 @@ import pokemonLogo from "../../assets/images/pokemon-logo-png-1421.png";
 import { MiniPokemonCard } from "../../components/MiniPokemonCard";
 import { BackgroundImageHome } from "../../components/BackgroundImageHome";
 import { DeckContext } from "../../context/DeckContext";
+import { PokemonCard } from "../../components/PokemonCard";
+import { PokemonListProps } from "../../components/PokemonList";
 
 
 
@@ -14,7 +16,10 @@ import { DeckContext } from "../../context/DeckContext";
 export const DeckScreen = () => {
   const { pokemonList } = useContext(DeckContext)
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-  const [selectedId, setSelectedId] = useState<string>('');
+  const [selectedItem, setSelectedItem] = useState<PokemonListProps>({
+    name: '',
+    url: ''
+  });
 
   return (
     <BackgroundImageHome>
@@ -33,10 +38,10 @@ export const DeckScreen = () => {
         columnWrapperStyle={styles.columnWrapper}
         contentContainerStyle={styles.flatListContainer}
         renderItem={({ item }) => (
-          console.log(item.id),
-          <MiniPokemonCard id={item.id} setIsModalVisible={setIsModalVisible} isModalVisible={false} deck={true} />
+          <MiniPokemonCard id={item.id} setIsModalVisible={setIsModalVisible} isModalVisible={false} deck={true} setSelectedItem={setSelectedItem}/>
         )}
       />
+      {isModalVisible && <PokemonCard deck={true} item={selectedItem} isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />}
     </BackgroundImageHome>
   );
 };
