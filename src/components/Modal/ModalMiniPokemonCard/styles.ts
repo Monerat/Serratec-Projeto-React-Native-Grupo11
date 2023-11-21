@@ -21,5 +21,11 @@ export const styles = StyleSheet.create({
         elevation: 5,
         width: "80%",
         maxHeight: "80%",
+    },
+    touchContainer:{
+        width:200,
+        height:300,
+        margin:20,
+        
     }
 })

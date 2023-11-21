@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 export const stylesMini = StyleSheet.create({
     container: {
-        justifyContent: "flex-start",
+        //justifyContent: "flex-start",
         width: "100%",
         height: "100%",
         borderWidth: 15,
@@ -48,7 +48,7 @@ export const stylesMini = StyleSheet.create({
     
     containerHabilidades: {
         alignItems: "flex-start",
-        width: "98%",
+        width: "100%",
         paddingTop: "4%"
     },
     containerSkill: {
@@ -57,7 +57,7 @@ export const stylesMini = StyleSheet.create({
         justifyContent: "space-between",
         borderBottomWidth:1,
         borderBottomColor:"black",
-        resizeMode: 'contain',
+        //resizeMode: 'contain',
     },
     containerText:{
         flexDirection: 'row',
