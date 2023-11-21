@@ -5,7 +5,7 @@ import pokemonLogo from "../../assets/images/pokemon-logo-png-1421.png";
 import pokeBall from "../../assets/images/pokeballAnimation.gif";
 import { BackgroundImageHome } from "../../components/BackgroundImageHome";
 
-export const HomeScreen = () => {
+export const Home = () => {
 
   return (
     <BackgroundImageHome>

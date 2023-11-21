@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Pokemon, getPokemon } from "../../../services/api";
 import { View, Modal, ActivityIndicator, Button } from 'react-native';
-import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading'
 import { PokemonListProps } from '../../PokemonList';
 import { DeckContext } from '../../../context/DeckContext'
 import { styles } from './styles';

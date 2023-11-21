@@ -1,20 +1,20 @@
-import { HomeScreen } from '../../screens/HomeScreen';
-import { DeckScreen } from '../../screens/DeckScreen';
-import { CardScreen } from '../../screens/CardScreen';
+import { Home } from '../../screens/Home';
+import { Deck } from '../../screens/Deck';
+import { Pokedex } from '../../screens/Pokedex';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
-import { AboutScreen } from '../../screens/AboutScreen'
+import { About } from '../../screens/About'
 import { DeckProvider } from '../../context/DeckContext';
 
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
 export type RootTabParamList = {
-  HomeScreen: {};
-  DeckScreen: { id: string };
-  CardScreen: {};
-  AboutScreen:{};
+  Home: {};
+  Deck: { id: string };
+  Pokedex: {};
+  About:{};
 }
 
 export function BottomTabNavigator() {
@@ -34,8 +34,8 @@ export function BottomTabNavigator() {
             <Ionicons name="home" size={24} color={color} />
           )
         }}
-        name="HomeScreen"
-        component={HomeScreen}
+        name="Home"
+        component={Home}
       />
       <Tab.Screen
         options={{
@@ -43,8 +43,8 @@ export function BottomTabNavigator() {
             <MaterialCommunityIcons name="cards" size={24} color={color} />
           )
         }}
-        name="DeckScreen"
-        component={DeckScreen}
+        name="Deck"
+        component={Deck}
       />
       <Tab.Screen
         options={{
@@ -52,8 +52,8 @@ export function BottomTabNavigator() {
             <MaterialCommunityIcons name="pokeball" size={24} color={color} />
           )
         }}
-        name="CardScreen"
-        component={CardScreen}
+        name="Pokedex"
+        component={Pokedex}
       />
       <Tab.Screen
         options={{
@@ -61,8 +61,8 @@ export function BottomTabNavigator() {
             <FontAwesome5 name="question" size={20} color='#E04A49' /> 
           )
         }}
-        name="AboutScreen"
-        component={AboutScreen}
+        name="About"
+        component={About}
       />
     </Tab.Navigator>
   );

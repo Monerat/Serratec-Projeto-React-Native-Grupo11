@@ -5,7 +5,7 @@ import { PokemonList, PokemonListProps } from "../../components/PokemonList";
 import { styles } from "./styles";
 import { ModalPokemonCard } from "../../components/Modal/ModalPokemonCard";
 
-export const CardScreen = () => {
+export const Pokedex = () => {
   const [pokemonList, setPokemonList] = useState<PokemonListProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
@@ -30,7 +30,7 @@ export const CardScreen = () => {
         setIsLoading(false);
       })
   }
-
+ 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Pokedex</Text>
@@ -41,8 +41,8 @@ export const CardScreen = () => {
             color={'#156'}
           />
           :
-          //lazyLoad
           <FlatList
+            // onEndReached={} fazer uma funcao para carregar mais pokemons
             data={pokemonList}
             renderItem={({ item }) => {
               return <PokemonList
