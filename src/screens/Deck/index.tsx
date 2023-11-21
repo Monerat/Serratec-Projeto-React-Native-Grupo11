@@ -9,6 +9,7 @@ import { DeckContext } from "../../context/DeckContext";
 import { PokemonListProps } from "../../components/PokemonList";
 import { ModalPokemonCard } from "../../components/Modal/ModalPokemonCard";
 import { ModalMiniPokemonCard } from "../../components/Modal/ModalMiniPokemonCard";
+import { Pokemon } from "../../services/api";
 
 export const Deck = () => {
   const { pokemonList } = useContext(DeckContext)
@@ -17,6 +18,10 @@ export const Deck = () => {
     name: '',
     url: ''
   });
+  const getListSize = (pokemonList: Pokemon[]):number => {
+    return pokemonList.length;
+  };
+
 
   return (
     <BackgroundImageHome>
@@ -25,7 +30,7 @@ export const Deck = () => {
         <Image source={pokemonLogo} style={styles.imageLogo} />
       </View>
       <View style={styles.viewText}>
-        <Text style={styles.text}><AntDesign name="star" size={16} color="black" />DECK POKEMON                                                                     0<MaterialCommunityIcons name="cards-outline" size={16} color="black" /></Text>
+        <Text style={styles.text}><AntDesign name="star" size={16} color="black" />DECK POKEMON                                                                     {getListSize(pokemonList)}<MaterialCommunityIcons name="cards-outline" size={16} color="black" /></Text>
         <Text style={styles.textSublinha}>_______________________________________________________________</Text>
       </View>
       
