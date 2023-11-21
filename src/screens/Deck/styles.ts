@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   text: {
     fontSize: 15,
     fontWeight: 'bold',
-    color: 'red',
+    color: 'black',
     marginBottom: -12
   },
 
