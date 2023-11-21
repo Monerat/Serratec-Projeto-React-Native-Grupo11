@@ -39,8 +39,6 @@ export const DeckScreen = () => {
       <FlatList
         data={pokemonList}
         numColumns={2}
-        columnWrapperStyle={styles.columnWrapper}
-        contentContainerStyle={styles.flatListContainer}
         renderItem={({ item }) => (
           <ModalMiniPokemonCard id={item.id} deck ={true} isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} setSelectedItem={setSelectedItem}/>
         )}

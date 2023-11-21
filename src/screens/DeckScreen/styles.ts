@@ -27,15 +27,19 @@ export const styles = StyleSheet.create({
   },
 
   columnWrapper: {
-    height: "70%",
-    width: "50%",  
+    height: "65%",
+    width: "36%",
+    margin: 25, 
+    
   },
 
-  deckContainer: {
+  /*deckContainer: {
     height: "70%",
     width: "50%",  
-  },
+  },*/
   flatListContainer: {
-    flexGrow: 1
+    flexGrow: 1,
+    flex: 1,
+      
   }
 });
