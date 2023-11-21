@@ -1,11 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Pokemon, getPokemon } from "../../../services/api";
-import { View, Modal, ActivityIndicator, Button, TouchableOpacity, } from 'react-native';
-import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading'
+import { TouchableOpacity } from 'react-native';
 import { PokemonListProps } from '../../PokemonList';
 import { DeckContext } from '../../../context/DeckContext'
-import { styles } from './styles';
 import { PokemonCard } from '../../PokemonCard';
 
 interface PokemonCardProps {

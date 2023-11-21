@@ -15,7 +15,7 @@ const data = [
     { id: '5', name: 'Ricardo', github: 'https://github.com/RicardoCastilho6' },
   ];
 
-export const AboutScreen = () => {
+export const About = () => {
 
     const handleGitHubClick = (gitLink) => {
         Linking.openURL(gitLink);
