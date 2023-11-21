@@ -112,9 +112,8 @@ export const ModalMiniPokemonCard = ({ isModalVisible, setIsModalVisible, id, de
   }
 
   return (
-    <TouchableOpacity onPress={abrirModal}>
+    <TouchableOpacity onPress={abrirModal} style={{width:200, height:250}}>
       <PokemonCard tamanho='Small' pokemon={pokemon}></PokemonCard>
     </TouchableOpacity>
-    
   )
 }

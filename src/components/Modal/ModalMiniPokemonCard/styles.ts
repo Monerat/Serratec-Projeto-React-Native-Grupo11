@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
     modal: {
-        flex: 1,
+        
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: '#12100055'
