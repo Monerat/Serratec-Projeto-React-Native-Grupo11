@@ -4,6 +4,8 @@ import { TouchableOpacity } from 'react-native';
 import { PokemonListProps } from '../../PokemonList';
 import { DeckContext } from '../../../context/DeckContext'
 import { PokemonCard } from '../../PokemonCard';
+import { styles } from './styles';
+
 
 interface PokemonCardProps {
   id: number;
