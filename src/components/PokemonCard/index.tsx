@@ -43,7 +43,9 @@ export const PokemonCard = ({ tamanho, pokemon }: PokemonCardProps) => {
 
         <View style={tamanho === 'Large' ? styles.containerPokemon : stylesMini.containerPokemon}>
           <BackgroundImage pokemonType={pokemon.types[0].type.name} >
-            <Image source={{ uri: pokemon.sprites.other["official-artwork"].front_default }} style={tamanho === 'Large' ? styles.imgPokemon : stylesMini.imgPokemon} />
+            {pokemon.sprites.other["official-artwork"].front_default && (
+              <Image source={{ uri: pokemon.sprites.other["official-artwork"].front_default }} style={tamanho === 'Large' ? styles.imgPokemon : stylesMini.imgPokemon} />
+            )}
           </BackgroundImage>
         </View>
 
