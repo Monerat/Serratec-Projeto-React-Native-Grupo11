@@ -28,7 +28,6 @@ const corDoCardPeloType = (type?: string): string => {
     dragon:"#7038f8",
     dark:"#705848",
     fairy:"#ee99ac",
-
   }
 
   return colors[type??''] ?? '#ffff'

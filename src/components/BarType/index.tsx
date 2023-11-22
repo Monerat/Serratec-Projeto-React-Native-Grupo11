@@ -16,7 +16,6 @@ import elementNormal from "../../assets/images/ElementNormal.png";
 import elementPoison from "../../assets/images/ElementPoison.png";
 import elementPsychic from "../../assets/images/ElementPsychic.png";
 import elementRock from "../../assets/images/ElementRock.png";
-import elementToxic from "../../assets/images/ElementToxic.png";
 import { Image, ImageSourcePropType } from "react-native";
 import { styles } from "./styles";
 

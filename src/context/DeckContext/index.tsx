@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Pokemon } from '../../services/api';
+import { Alert } from 'react-native';
 
 interface ContextProps {
   children: React.ReactNode
@@ -127,13 +128,11 @@ export const DeckProvider = ({ children }: ContextProps) => {
         setPokemonList([...pokemonList, pokemon]);
         storeData([...pokemonList, pokemon]);
       }else{
-        console.log("numero maximo de pokemons no deck atingido")
+        Alert.alert("Número máximo de Pokémon's no Deck atingido")
       }
     }else{
-      console.log("pokemon já está adicionado no deck")
+      Alert.alert("Pokémon já está adicionado no Deck")
     }
-    
-
   }
 
   function removeCardFromDeck(index: number) {

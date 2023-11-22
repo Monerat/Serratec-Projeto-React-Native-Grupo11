@@ -33,13 +33,11 @@ export const Pokedex = () => {
       })
   }
 
-  //não está funcionando não sei pq :(
   const handleCarregarMaisPokemons = () =>{
     getMorePokemons(nextPokemonList)
       .then(response => {
         setPokemonList(pokemonList.concat(response.data.results));
         setNextPokemonList(response.data.next);
-        console.log(pokemonList)
       })
       .catch(error => {
         console.log(error.data);

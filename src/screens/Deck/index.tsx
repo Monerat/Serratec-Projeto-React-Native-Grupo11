@@ -31,7 +31,7 @@ export const Deck = () => {
         <View style={styles.viewText}>
           <View style={styles.viewDeck}>
             <AntDesign name="star" size={24} color="black" />
-            <Text style={styles.text}>DECK POKEMON</Text>
+            <Text style={styles.text}>DECK POKÉMON</Text>
           </View>
           <View style={styles.viewNumero}>
             <Text style={styles.numeroCards}>{getListSize(pokemonList)}</Text>

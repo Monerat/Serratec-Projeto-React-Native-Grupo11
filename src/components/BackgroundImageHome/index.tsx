@@ -1,6 +1,6 @@
 // components/BackgroundImageHome.tsx
 import React from "react";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground } from "react-native";
 import styles from "./styles";
 import backgroundImg from "../../assets/images/Home.gif"
 

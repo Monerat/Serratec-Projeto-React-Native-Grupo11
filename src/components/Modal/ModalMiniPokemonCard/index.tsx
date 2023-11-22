@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Pokemon, getPokemon } from "../../../services/api";
 import { TouchableOpacity } from 'react-native';
 import { PokemonListProps } from '../../PokemonList';
-import { DeckContext } from '../../../context/DeckContext'
 import { PokemonCard } from '../../PokemonCard';
 import { styles } from './styles';
 
@@ -80,8 +79,6 @@ export const ModalMiniPokemonCard = ({ isModalVisible, setIsModalVisible, id, de
       }
     ],
   });
-
-  const { addCardToDeck, removeCardFromDeck } = useContext(DeckContext);
 
   useEffect(() => {
     getPokemonDetails(id)

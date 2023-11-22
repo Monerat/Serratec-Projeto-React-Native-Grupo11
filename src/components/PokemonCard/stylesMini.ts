@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 export const stylesMini = StyleSheet.create({
     container: {
-        //justifyContent: "flex-start",
+        justifyContent: "flex-start",
         width: "100%",
         height: "100%",
         borderWidth: 15,
@@ -17,7 +17,7 @@ export const stylesMini = StyleSheet.create({
     },
     textPokemonName: {
         textTransform: 'capitalize',
-        fontSize: 10,
+        fontSize: 14,
         
     },
     containerHp: {
@@ -25,11 +25,12 @@ export const stylesMini = StyleSheet.create({
         alignItems:'baseline'
     },
     textPokemonHp: {
+        fontSize: 10,
         textTransform: 'uppercase',
        
     },
     textPokemonNumber: {
-        fontSize: 10,
+        fontSize: 14,
     },
     containerPokemon: {
         borderWidth: 5,

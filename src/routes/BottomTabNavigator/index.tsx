@@ -4,7 +4,6 @@ import { Pokedex } from '../../screens/Pokedex';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
-import { DeckProvider } from '../../context/DeckContext';
 import StackNavigator from '../BottomStackNavigator';
 
 
@@ -14,7 +13,7 @@ export type RootTabParamList = {
   Home: {};
   Deck: { id: string };
   Pokedex: {};
-  About:{};
+  AboutStack:{};
 }
 
 export function BottomTabNavigator() {
@@ -61,7 +60,7 @@ export function BottomTabNavigator() {
             <FontAwesome5 name="question" size={24} color={color} /> 
           )
         }}
-        name="About"
+        name="AboutStack"
         component={StackNavigator}
       />
     </Tab.Navigator>

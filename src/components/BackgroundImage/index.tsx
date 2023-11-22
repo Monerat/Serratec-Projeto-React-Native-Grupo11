@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, ImageSourcePropType } from "react-native";
 import styles from "./styles";
 import backgroundForest from "../../assets/images/backgroundForest.png"
 import backgroundNormal from "../../assets/images/backgroundNormal.jpg"
@@ -27,7 +27,7 @@ interface BackgroundImageProps {
 }
 
 const switchBackgroundImg = (pokemonType?: string) => {
-  const typeImg:Record<string,string> = {
+  const typeImg:Record<string,ImageSourcePropType> = {
     normal: backgroundNormal,
     fire: backgroundFire,
     water: backgroundWater,
@@ -47,7 +47,7 @@ const switchBackgroundImg = (pokemonType?: string) => {
     dark: backgroundDark,
     fairy: backgroundFairy,
   }
-  return typeImg[pokemonType??''] ?? "#ffffff"
+  return typeImg[pokemonType??''] ?? backgroundNormal;
 }
 
 export const BackgroundImage: React.FC<BackgroundImageProps> = ({ children, pokemonType }) => (
