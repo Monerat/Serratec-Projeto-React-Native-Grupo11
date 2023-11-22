@@ -20,7 +20,13 @@ export const About = () => {
     Linking.openURL(gitLink);
   };
 
-  const renderItem = ({item}) => (
+  interface Item {
+    id: string;
+    name: string;
+    github: string;
+  }
+
+  const renderItem = ({item}: {item:Item}) => (
     <View style={styles.nomeCreditos}>
       <View style={styles.creditos}>
         <MaterialCommunityIcons name="pokeball" size={24} color="#E04A49" />
@@ -53,7 +59,6 @@ export const About = () => {
             renderItem={renderItem}
             keyExtractor={item => item.id}
             horizontal={true}
-            
           />
         </View>
 
