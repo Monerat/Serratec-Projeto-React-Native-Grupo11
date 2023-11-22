@@ -20,8 +20,8 @@ Montar um app com tudo que foi aprendido nas aulas.
   - Usar duas formas de navegação.✔️
   - Componentizar.✔️
   - Fazer requisições a api.✔️
-  - Salvar e utilizar algo em contexto.
-  - Salvar e utilizar algo no asyncstorage.
+  - Salvar e utilizar algo em contexto.✔️
+  - Salvar e utilizar algo no asyncstorage.✔️
 
 ### Recompensa:
   - 6,0 nota final.
