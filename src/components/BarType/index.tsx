@@ -39,7 +39,7 @@ const handleImageType = (type?: string): string => {
       case "electric":
         return elementEletric;
       case "ground":
-        return elementWater;
+        return elementGround;
       case "rock":
         return elementRock;
       case "psychic":
