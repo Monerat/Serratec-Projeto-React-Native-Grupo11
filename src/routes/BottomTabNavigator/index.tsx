@@ -4,8 +4,8 @@ import { Pokedex } from '../../screens/Pokedex';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
-import { About } from '../../screens/About'
 import { DeckProvider } from '../../context/DeckContext';
+import StackNavigator from '../BottomStackNavigator';
 
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -62,7 +62,7 @@ export function BottomTabNavigator() {
           )
         }}
         name="About"
-        component={About}
+        component={StackNavigator}
       />
     </Tab.Navigator>
   );
