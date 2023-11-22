@@ -23,9 +23,9 @@ export const styles = StyleSheet.create({
         maxHeight: "80%",
     },
     touchContainer:{
-        width:200,
+        width:190,
         height:300,
-        margin:20,
+        margin:5,
         
     }
 })

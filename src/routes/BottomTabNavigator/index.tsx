@@ -58,7 +58,7 @@ export function BottomTabNavigator() {
       <Tab.Screen
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="question" size={20} color='#E04A49' /> 
+            <FontAwesome5 name="question" size={24} color={color} /> 
           )
         }}
         name="About"

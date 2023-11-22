@@ -55,9 +55,8 @@ export const stylesMini = StyleSheet.create({
         flexDirection: "row",
         width: "100%",
         justifyContent: "space-between",
-        borderBottomWidth:1,
+        borderBottomWidth: 1,
         borderBottomColor:"black",
-        //resizeMode: 'contain',
     },
     containerText:{
         flexDirection: 'row',
@@ -69,7 +68,6 @@ export const stylesMini = StyleSheet.create({
     
     valor: {
         fontSize: 10,
-        resizeMode: 'contain'
     },
     containerType:{
         height:"12%",

@@ -2,44 +2,38 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   headerContainer: {
-    alignItems: 'center',
+    height: '20%',
+    width: "100%",
+    borderBottomWidth: 2,
+    borderBottomColor: 'black',
+    
   },
-
-  viewText: {
-    alignItems: 'center',
-  },
-
-  text: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: 'black',
-    marginBottom: -12
-  },
-
   imageLogo: {
     height: 130,
     width: "60%",
+    alignSelf: 'center',
   },
 
-  textSublinha: {
-    fontSize: 15,
-    fontWeight: 'bold'
+  viewText: {
+    flexDirection: "row",
+    height: '18%',
+    width: "100%",
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
   },
 
-  columnWrapper: {
-    height: "65%",
-    width: "36%",
-    margin: 25, 
-    
+  text: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
   },
-
-  /*deckContainer: {
-    height: "70%",
-    width: "50%",  
-  },*/
-  flatListContainer: {
-    flexGrow: 1,
-    flex: 1,
-      
+  numeroCards: {
+    fontSize: 18,
+  },
+  viewDeck:{
+    flexDirection: 'row'
+  },
+  viewNumero: {
+    flexDirection: 'row'
   }
 });

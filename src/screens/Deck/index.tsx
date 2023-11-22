@@ -1,5 +1,5 @@
-import { FlatList, View, Text, Image, ScrollView } from "react-native";
-import { useContext, useState } from "react";
+import { FlatList, View, Text, Image } from "react-native";
+import { useContext, useState  } from "react";
 import { styles } from "./styles"
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -28,10 +28,16 @@ export const Deck = () => {
      
       <View style={styles.headerContainer}>
         <Image source={pokemonLogo} style={styles.imageLogo} />
-      </View>
-      <View style={styles.viewText}>
-        <Text style={styles.text}><AntDesign name="star" size={16} color="black" />DECK POKEMON                                                                     {getListSize(pokemonList)}<MaterialCommunityIcons name="cards-outline" size={16} color="black" /></Text>
-        <Text style={styles.textSublinha}>_______________________________________________________________</Text>
+        <View style={styles.viewText}>
+          <View style={styles.viewDeck}>
+            <AntDesign name="star" size={24} color="black" />
+            <Text style={styles.text}>DECK POKEMON</Text>
+          </View>
+          <View style={styles.viewNumero}>
+            <Text style={styles.numeroCards}>{getListSize(pokemonList)}</Text>
+            <MaterialCommunityIcons name="cards-outline" size={24} color="black" />
+          </View>
+        </View>
       </View>
       
       <FlatList
