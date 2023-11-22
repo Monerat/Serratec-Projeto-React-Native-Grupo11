@@ -55,6 +55,10 @@ export function getAllPokemons(): Promise<PokemonListResponse> {
   return apiPokemon.get(url)
 }
 
+export function getMorePokemons(url: string): Promise<PokemonListResponse>{
+  return apiPokemon.get(url)
+}
+
 export function getPokemon(id: number): Promise<PokemonResponse> {
   const url = `pokemon/${id}`;
   return apiPokemon.get(url)

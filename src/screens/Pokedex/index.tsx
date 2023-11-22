@@ -1,6 +1,6 @@
 import { Text, ActivityIndicator, FlatList, View } from "react-native";
 import { useEffect, useState } from "react";
-import { getAllPokemons } from "../../services/api";
+import { getAllPokemons, getMorePokemons } from "../../services/api";
 import { PokemonList, PokemonListProps } from "../../components/PokemonList";
 import { styles } from "./styles";
 import { ModalPokemonCard } from "../../components/Modal/ModalPokemonCard";
@@ -8,6 +8,7 @@ import { ModalPokemonCard } from "../../components/Modal/ModalPokemonCard";
 export const Pokedex = () => {
   const [pokemonList, setPokemonList] = useState<PokemonListProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [nextPokemonList, setNextPokemonList] = useState<string>('');
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 	const [selectedItem, setSelectedItem] = useState<PokemonListProps>({
     name: '',
@@ -22,6 +23,7 @@ export const Pokedex = () => {
     getAllPokemons()
       .then(response => {
         setPokemonList(response.data.results);
+        setNextPokemonList(response.data.next);
       })
       .catch(error => {
         console.log(error.data);
@@ -30,7 +32,23 @@ export const Pokedex = () => {
         setIsLoading(false);
       })
   }
- 
+
+  //não está funcionando não sei pq :(
+  const handleCarregarMaisPokemons = () =>{
+    getMorePokemons(nextPokemonList)
+      .then(response => {
+        setPokemonList(pokemonList.concat(response.data.results));
+        setNextPokemonList(response.data.next);
+        console.log(pokemonList)
+      })
+      .catch(error => {
+        console.log(error.data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Pokedex</Text>
@@ -42,7 +60,7 @@ export const Pokedex = () => {
           />
           :
           <FlatList
-            // onEndReached={} fazer uma funcao para carregar mais pokemons
+            onEndReached={handleCarregarMaisPokemons}
             data={pokemonList}
             renderItem={({ item }) => {
               return <PokemonList
