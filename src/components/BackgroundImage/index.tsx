@@ -11,15 +11,15 @@ import backgroundFlying from "../../assets/images/backgroundFlying.jpg"
 import backgroundFighting from "../../assets/images/backgroundFighter.png"
 import backgroundPoison from "../../assets/images/backgroundPoison.png"
 import backgroundRock from "../../assets/images/backgroundRock.png"
-// import backgroundEletric from "../../assets/images"
-// import backgroundGround from "../../assets/images"
-// import backgroundPsychic from "../../assets/images"
-// import backgroundIce from "../../assets/images"
-// import backgroundGhost from "../../assets/images"
-// import backgroundSteel from "../../assets/images"
-// import backgroundDragon from "../../assets/images"
-// import backgroundDark from "../../assets/images"
-// import backgroundFairy from "../../assets/images"
+import backgroundEletric from "../../assets/images/backgroundEletric.png"
+import backgroundGround from "../../assets/images/backgroundGround.png"
+import backgroundPsychic from "../../assets/images/backgroundPsychic.jpg"
+import backgroundIce from "../../assets/images/backgroundIce.jpg"
+import backgroundGhost from "../../assets/images/backgroundGhost.jpg"
+import backgroundSteel from "../../assets/images/backgroundSteel.png"
+import backgroundDragon from "../../assets/images/backgroundDragon.jpg"
+import backgroundDark from "../../assets/images/backgroundDark.png"
+import backgroundFairy from "../../assets/images/backgroundFairy.png"
 
 interface BackgroundImageProps {
   children: React.ReactNode;
@@ -44,27 +44,27 @@ const switchBackgroundImg = (pokemonType?: string) => {
     case "poison":
       return backgroundPoison;
     case "electric":
-      return "#f8d030";
+      return backgroundEletric;
     case "ground":
-      return "#e0c068";
+      return backgroundGround;
     case "rock":
       return backgroundRock;
     case "psychic":
-      return "#f85888";
+      return backgroundPsychic;
     case "ice":
-      return "#98d8d8";
+      return backgroundIce;
     case "bug":
       return backgroundForest;
     case "ghost":
-      return "#705898";
+      return backgroundGhost;
     case "steel":
-      return "#b8b8d0";
+      return backgroundSteel;
     case "dragon":
-      return "#7038f8";
+      return backgroundDragon;
     case "dark":
-      return "#705848";
+      return backgroundDark;
     case "fairy":
-      return "#ee99ac";
+      return backgroundFairy;
     default:
       return "#ffffff";
   }
