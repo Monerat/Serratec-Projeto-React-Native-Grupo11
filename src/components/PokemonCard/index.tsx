@@ -9,7 +9,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
-
+import { BarraType } from '../../components/BarType';
 interface PokemonCardProps {
   tamanho?: 'Large' | 'Small';
   pokemon: Pokemon;
@@ -90,7 +90,7 @@ export const PokemonCard = ({ tamanho, pokemon }: PokemonCardProps) => {
           </View>
         </View>
         <View style={tamanho === 'Large' ? styles.containerType : stylesMini.containerType}>
-          <Text style={[tamanho === 'Large' ? styles.textPokemonType : stylesMini.textPokemonType, { fontFamily: 'gillBold' }]}>{pokemon.types[0].type.name}</Text>
+          <BarraType pokemonType={pokemon.types[0].type.name} tamanho={tamanho} />
         </View>
       </CorCardPorType>
     </>
