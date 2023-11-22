@@ -72,7 +72,7 @@ export const stylesMini = StyleSheet.create({
         resizeMode: 'contain'
     },
     containerType:{
-        height:"12%",
+        height:"18%",
         width: "100%",
         resizeMode: 'contain',
         justifyContent:'flex-end'

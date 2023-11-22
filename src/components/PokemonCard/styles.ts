@@ -54,7 +54,7 @@ export const styles = StyleSheet.create({
         borderWidth: 5,
         borderColor: "#707070",
         width: "100%",
-        height: "50%",
+        height: "48%",
         justifyContent: 'center',
     },
     imgPokemon: {
@@ -90,7 +90,7 @@ export const styles = StyleSheet.create({
         fontSize: 25,
     },
     containerType:{
-        height:"12%",
+        height:"19%",
         width: "100%",
         resizeMode: 'contain',
         justifyContent:'flex-end'
