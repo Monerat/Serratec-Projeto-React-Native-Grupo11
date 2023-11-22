@@ -27,47 +27,27 @@ interface BackgroundImageProps {
 }
 
 const switchBackgroundImg = (pokemonType?: string) => {
-  
-  switch (pokemonType) {
-    case "normal":
-      return backgroundNormal;
-    case "fire":
-      return backgroundFire;
-    case "water":
-      return backgroundWater;
-    case "grass":
-      return backgroundGrass;
-    case "flying":
-      return backgroundFlying;
-    case "fighting":
-      return backgroundFighting;
-    case "poison":
-      return backgroundPoison;
-    case "electric":
-      return backgroundEletric;
-    case "ground":
-      return backgroundGround;
-    case "rock":
-      return backgroundRock;
-    case "psychic":
-      return backgroundPsychic;
-    case "ice":
-      return backgroundIce;
-    case "bug":
-      return backgroundForest;
-    case "ghost":
-      return backgroundGhost;
-    case "steel":
-      return backgroundSteel;
-    case "dragon":
-      return backgroundDragon;
-    case "dark":
-      return backgroundDark;
-    case "fairy":
-      return backgroundFairy;
-    default:
-      return "#ffffff";
+  const typeImg:Record<string,string> = {
+    normal: backgroundNormal,
+    fire: backgroundFire,
+    water: backgroundWater,
+    grass: backgroundGrass,
+    flying: backgroundFlying,
+    fighting: backgroundFighting,
+    poison: backgroundPoison,
+    electric: backgroundEletric,
+    ground: backgroundGround,
+    rock: backgroundRock,
+    psychic: backgroundPsychic,
+    ice: backgroundIce,
+    bug: backgroundForest,
+    ghost: backgroundGhost,
+    steel: backgroundSteel,
+    dragon: backgroundDragon,
+    dark: backgroundDark,
+    fairy: backgroundFairy,
   }
+  return typeImg[pokemonType??''] ?? "#ffffff"
 }
 
 export const BackgroundImage: React.FC<BackgroundImageProps> = ({ children, pokemonType }) => (

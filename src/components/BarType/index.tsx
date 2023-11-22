@@ -21,46 +21,27 @@ import { Image, ImageSourcePropType } from "react-native";
 import { styles } from "./styles";
 
 const handleImageType = (type?: string): ImageSourcePropType => {
-  switch (type) {
-    case "normal":
-      return elementNormal;
-    case "fire":
-      return elementFire;
-    case "water":
-      return elementWater;
-    case "grass":
-      return elementGrass;
-    case "flying":
-      return elementFly;
-    case "fighting":
-      return elementFight;
-    case "poison":
-      return elementPoison;
-    case "electric":
-      return elementEletric;
-    case "ground":
-      return elementGround;
-    case "rock":
-      return elementRock;
-    case "psychic":
-      return elementPsychic;
-    case "ice":
-      return elementIce;
-    case "bug":
-      return elementBug;
-    case "ghost":
-      return elementGhost;
-    case "steel":
-      return elementSteel;
-    case "dragon":
-      return elementDragon;
-    case "dark":
-      return elementDark;
-    case "fairy":
-      return elementFairy;
-    default:
-      return elementNormal;
+  const barType:Record<string,ImageSourcePropType> = {
+    normal: elementNormal,
+    fire: elementFire,
+    water: elementWater,
+    grass: elementGrass,
+    flying: elementFly,
+    fighting: elementFight,
+    poison: elementPoison,
+    electric: elementEletric,
+    ground: elementGround,
+    rock: elementRock,
+    psychic: elementPsychic,
+    ice: elementIce,
+    bug: elementBug,
+    ghost: elementGhost,
+    steel: elementSteel,
+    dragon: elementDragon,
+    dark: elementDark,
+    fairy: elementFairy
   }
+  return barType[type??''] ?? elementNormal
 };
 
 interface BarraTypeProp {
