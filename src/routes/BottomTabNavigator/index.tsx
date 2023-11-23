@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 import StackNavigator from '../BottomStackNavigator';
+import { Duel } from '../../screens/Duel';
 
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -14,6 +15,7 @@ export type RootTabParamList = {
   Deck: { id: string };
   Pokedex: {};
   AboutStack:{};
+  Duel:{};
 }
 
 export function BottomTabNavigator() {
@@ -62,6 +64,15 @@ export function BottomTabNavigator() {
         }}
         name="AboutStack"
         component={StackNavigator}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="sword" size={24} color={color} />
+          ),
+        }}
+        name="Duel"
+        component={Duel}
       />
     </Tab.Navigator>
   );

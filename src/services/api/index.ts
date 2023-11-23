@@ -13,7 +13,7 @@ export interface Pokemon {
 
 }
 
-interface PokemonStat {
+export interface PokemonStat {
   base_stat: number;
   stat: {
     name: string;
@@ -62,4 +62,9 @@ export function getMorePokemons(url: string): Promise<PokemonListResponse>{
 export function getPokemon(id: number): Promise<PokemonResponse> {
   const url = `pokemon/${id}`;
   return apiPokemon.get(url)
+}
+
+export function getRandomPokemon(): Promise<Pokemon> {
+  const randomId = Math.floor(Math.random() * 898) + 1;
+  return getPokemon(randomId).then((response) => response.data);
 }
