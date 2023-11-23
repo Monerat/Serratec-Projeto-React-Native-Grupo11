@@ -68,3 +68,8 @@ export function getRandomPokemon(): Promise<Pokemon> {
   const randomId = Math.floor(Math.random() * 898) + 1;
   return getPokemon(randomId).then((response) => response.data);
 }
+
+export function getPokemonByName(name: string): Promise<PokemonResponse> {
+  const url = `pokemon/${name}`;
+  return apiPokemon.get(url);
+}

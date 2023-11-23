@@ -11,11 +11,11 @@ import WhosThatPokemon from "../../assets/music/whos-that-pokemon.mp3";
 import PokemonIntro from "../../assets/music/pokemon-intro.mp3";
 import ThemeSound from "../../assets/music/pokemon-theme-song.mp3";
 
-interface PokemonCardProps {
-  pokemon: Pokemon;
-}
+// interface PokemonCardProps {
+//   pokemon: Pokemon;
+// }
 
-export const Home = ({ pokemon }: PokemonCardProps) => {
+export const Home = () => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [selectedSprite, setSelectedSprite] = useState<string | null>(null);
   const [selectedName, setSelectedName] = useState("");
