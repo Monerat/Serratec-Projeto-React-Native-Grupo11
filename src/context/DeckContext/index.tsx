@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Pokemon } from '../../services/api';
 import { Alert } from 'react-native';

@@ -5,6 +5,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 import StackNavigator from '../BottomStackNavigator';
+import { HistoricoBattle } from '../../screens/HistoricoBattle';
+import { Battle } from '../../screens/Battle';
+import { About } from '../../screens/About';
 
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -13,7 +16,9 @@ export type RootTabParamList = {
   Home: {};
   Deck: { id: string };
   Pokedex: {};
-  AboutStack:{};
+  About:{};
+  HistoricoBattle:{};
+  Battle:{};
 }
 
 export function BottomTabNavigator() {
@@ -48,6 +53,16 @@ export function BottomTabNavigator() {
       <Tab.Screen
         options={{
           tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="sword-cross" size={24} color={color} />
+          )
+        }}
+        name="HistoricoBattle"
+        component={HistoricoBattle}
+      />
+      
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="pokeball" size={24} color={color} />
           )
         }}
@@ -60,8 +75,8 @@ export function BottomTabNavigator() {
             <FontAwesome5 name="question" size={24} color={color} /> 
           )
         }}
-        name="AboutStack"
-        component={StackNavigator}
+        name="About"
+        component={About}
       />
     </Tab.Navigator>
   );

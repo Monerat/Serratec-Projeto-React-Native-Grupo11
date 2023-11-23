@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { BottomTabNavigator } from './BottomTabNavigator';
+import BottomStackNavigator from './BottomStackNavigator';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -11,7 +12,7 @@ export const Routes = () => {
   return (
     <>
       <NavigationContainer>
-        <BottomTabNavigator />
+        <BottomStackNavigator />
       </NavigationContainer>
     </>
   );
