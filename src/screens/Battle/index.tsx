@@ -1,4 +1,4 @@
-import { FlatList, View } from "react-native";
+import { FlatList, View, Text, TouchableOpacity } from "react-native";
 import { useContext, useEffect, useState } from "react";
 import { styles } from "./styles";
 import { BackgroundImageBattle } from "../../components/BackgroundImageBattle";
@@ -10,6 +10,7 @@ import { ModalPokemonCardBatalha } from "../../components/Modal/ModalPokemonCard
 import { ModalMiniPokemonCardBatalha } from "../../components/Modal/ModalMiniPokemonCardBatalha";
 import { ModalBatalha } from "../../components/Modal/ModalBatalha";
 import { BattleContext } from "../../context/BattleContext";
+import { useFonts } from "expo-font";
 
 export interface RodadaProp{
   idPoke: number;
@@ -20,6 +21,7 @@ export interface RodadaProp{
 
 export const Battle = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [battleResultMessage, setBattleResultMessage] = useState<string>('');
   const { pokemonList } = useContext(DeckContext)
   const { idBatalha } = useContext(BattleContext)
   const [idBatalhaAtual, setIdBatalhaAtual] = useState<number>(idBatalha);
@@ -40,6 +42,9 @@ export const Battle = () => {
     name: '',
     url: ''
   });
+  const [fontsLoaded] = useFonts({
+    'pokemonFont': require('../../assets/fonts/pokemon-solid.ttf')
+  })
   
   useEffect(() => {
      if(deckBatalha.length===0){
@@ -74,16 +79,31 @@ export const Battle = () => {
         resultado: 'Win',
         deck: pokemonList
       })
+      setTimeout(() => {
+      setBattleResultMessage('Vitória');
       setIdBatalhaAtual(idBatalhaAtual+1)
+    }, 2000);
     }else{
       addBatalha({
         id: idBatalhaAtual,
         resultado: 'Loss',
         deck: pokemonList
       })
+      setTimeout(() => {
+      setBattleResultMessage('Derrota');
+    }, 2000);
       setIdBatalhaAtual(idBatalhaAtual+1)
     }
   }
+
+  const restartBattle = () => {
+    setDeckBatalha(pokemonList);
+    setDeckRobot([0, 1, 2, 3, 4, 5]);
+    setBattleStart(false);
+    setResultadoBatalha([]);
+    setBattleResultMessage('');
+  };
+
   return (
     <BackgroundImageBattle>
       <View style={styles.oponentDeckContainer}>
@@ -103,6 +123,16 @@ export const Battle = () => {
           {battleStart && <ModalBatalha id={selectedId} statusEscolhido={statusEscolhido} 
           battleStart={battleStart} setBattleStart={setBattleStart} setResultadoRodada={setResultadoRodada} resultadoRodada={resultadoRodada}
           resultadoBatalha={resultadoBatalha} setResultadoBatalha={setResultadoBatalha}/>}
+        </View>
+        <View style={styles.messageContainer}>
+        {battleResultMessage !== '' && (
+          <Text style={[styles.resultMessage, { fontFamily: 'pokemonFont' }]}>{`${battleResultMessage}`}</Text>
+        )}
+        {battleResultMessage !== '' && (
+        <TouchableOpacity onPress={restartBattle} style={styles.restartButton}>
+            <Text style={styles.restartButtonText}>Reiniciar Batalha</Text>
+          </TouchableOpacity>
+          )}
         </View>
       </View>
       <View style={styles.myDeckContainer}>
