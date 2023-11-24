@@ -31,4 +31,27 @@ export const styles = StyleSheet.create({
     height: "15%",
     width: "100%",
   },
+  messageContainer: {
+    alignItems: "center",
+  },
+  resultMessage: {
+    color: "#3560ad",
+    fontSize: 90,
+    textShadowColor: "#FDB542",
+    textShadowOffset: { width: 15, height: 15 },
+    textShadowRadius: 1,
+    textTransform: "capitalize",
+    overflow: "hidden",
+  },
+  restartButton: {
+    backgroundColor: '#3560ad',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  restartButtonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 16,
+  },
 });
