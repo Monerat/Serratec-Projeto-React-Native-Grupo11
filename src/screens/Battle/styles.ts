@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   cardImage: {
     height: "100%",
     width: "100%",
-    borderRadius: 10, // Adicione borda arredondada, se desejar
+    borderRadius: 10,
   },
   fieldContainer: {
     height: "70%",

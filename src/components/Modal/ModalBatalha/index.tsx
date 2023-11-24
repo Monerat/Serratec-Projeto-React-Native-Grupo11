@@ -4,16 +4,21 @@ import { Alert, TouchableOpacity, View } from 'react-native';
 import { PokemonListProps } from '../../PokemonList';
 import { PokemonCard } from '../../PokemonCard';
 import { styles } from './styles';
+import { RodadaProp } from '../../../screens/Battle';
 
 
 interface PokemonCardProps {
   id: number;
   battleStart: boolean;
   statusEscolhido: string;
+  resultadoBatalha: RodadaProp[];
+  resultadoRodada: RodadaProp;
   setBattleStart: React.Dispatch<React.SetStateAction<boolean>>;
+  setResultadoRodada: React.Dispatch<React.SetStateAction<RodadaProp>>;
+  setResultadoBatalha: React.Dispatch<React.SetStateAction<RodadaProp[]>>;
 }
 
-export const ModalBatalha = ({ id,battleStart,setBattleStart,statusEscolhido }: PokemonCardProps) => {
+export const ModalBatalha = ({ id,battleStart,setBattleStart,statusEscolhido, resultadoRodada, setResultadoRodada ,resultadoBatalha, setResultadoBatalha}: PokemonCardProps) => {
   const [isLoadingPoke, setIsLoadingPoke] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [PokemonRobot, setPokemonRobot] = useState<Pokemon>({
@@ -189,6 +194,13 @@ export const ModalBatalha = ({ id,battleStart,setBattleStart,statusEscolhido }: 
         //venceu
         setTimeout(() => {
           Alert.alert('Voce ganhou')
+          setResultadoRodada({
+            idPoke: pokemon.id,
+            idPokeRoboto: PokemonRobot.id,
+            statusDaRodada: statusEscolhido,
+            vencedor: true
+          })
+          setResultadoBatalha([...resultadoBatalha, resultadoRodada])
           setBattleStart(false)
         }, 3000);
         
@@ -196,6 +208,13 @@ export const ModalBatalha = ({ id,battleStart,setBattleStart,statusEscolhido }: 
         //perdeu
         setTimeout(() => {
           Alert.alert('Voce se fodeu')
+          setResultadoRodada({
+            idPoke: pokemon.id,
+            idPokeRoboto: PokemonRobot.id,
+            statusDaRodada: statusEscolhido,
+            vencedor: false
+          })
+          setResultadoBatalha([...resultadoBatalha, resultadoRodada])
           setBattleStart(false)
         }, 3000);
       }

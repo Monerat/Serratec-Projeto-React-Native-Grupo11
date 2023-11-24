@@ -1,7 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Pokemon } from '../../services/api';
-import { Alert } from 'react-native';
 import { ResultadoBatalhaProps } from '../../components/ResultadoBatalha';
 
 interface ContextProps {
@@ -9,8 +7,9 @@ interface ContextProps {
 }
 
 export interface BattleContextProvider {
-    listaResultadoBatalha: ResultadoBatalhaProps[],
-    addBatalha: (batalha: ResultadoBatalhaProps) => void,
+    idBatalha: number;
+    listaResultadoBatalha: ResultadoBatalhaProps[];
+    addBatalha: (batalha: ResultadoBatalhaProps) => void;
 }
 
 
@@ -83,16 +82,19 @@ export const BattleContext = createContext<BattleContextProvider>({
         }]
       },],
 
-    addBatalha: (batalha: ResultadoBatalhaProps) => { }
+    addBatalha: (batalha: ResultadoBatalhaProps) => { },
+    idBatalha:0
 });
 
 export const BattleProvider = ({ children }: ContextProps) => {
   const [listaResultadoBatalha, setListaResultadoBatalha] = useState<ResultadoBatalhaProps[]>([]);
+  const [idBatalha, setIdBatalha] = useState<number>();
 
   useEffect(() => {
     getData()
       .then(res => {
         setListaResultadoBatalha(res ? res : []);
+        setIdBatalha(res ? res.length : 0)
       })
   }, []);
 
@@ -124,6 +126,7 @@ export const BattleProvider = ({ children }: ContextProps) => {
   return (
     <BattleContext.Provider
       value={{
+        idBatalha,
         listaResultadoBatalha,
         addBatalha,
       }}
