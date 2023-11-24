@@ -11,6 +11,7 @@ import { ModalMiniPokemonCardBatalha } from "../../components/Modal/ModalMiniPok
 import { ModalBatalha } from "../../components/Modal/ModalBatalha";
 import { BattleContext } from "../../context/BattleContext";
 import { useFonts } from "expo-font";
+import { Audio } from 'expo-av';
 
 export interface RodadaProp{
   idPoke: number;
@@ -31,6 +32,7 @@ export const Battle = () => {
   const [deckRobot, setDeckRobot] = useState<number[]>([0, 1, 2, 3, 4, 5]);
   const [selectedId, setSelectedId] = useState<number>(0);
   const [battleStart, setBattleStart] = useState<boolean>(false);
+  const [sound, setSound] = useState<Audio.Sound | null>(null);
   const [resultadoRodada, setResultadoRodada] = useState<RodadaProp>({
     idPoke: 0,
     idPokeRoboto: 0,
@@ -79,6 +81,7 @@ export const Battle = () => {
         resultado: 'Win',
         deck: pokemonList
       })
+      playWinSound('win-music.mp3')
       setTimeout(() => {
       setBattleResultMessage('Vitória');
       setIdBatalhaAtual(idBatalhaAtual+1)
@@ -89,6 +92,7 @@ export const Battle = () => {
         resultado: 'Loss',
         deck: pokemonList
       })
+      playLossSound('loss-music.mp3')
       setTimeout(() => {
       setBattleResultMessage('Derrota');
     }, 2000);
@@ -96,14 +100,63 @@ export const Battle = () => {
     }
   }
 
+  const playWinSound = async (soundFileName: string) => {
+    try {
+      const { sound } = await Audio.Sound.createAsync(
+        require('../../assets/music/win-music.mp3')
+      );
+      setSound(sound);
+      await sound.playAsync();
+    } catch (error) {
+      console.error('Error loading sound', error);
+    }
+  };
+
+  const playLossSound = async (soundFileName: string) => {
+    try {
+      const { sound } = await Audio.Sound.createAsync(
+        require('../../assets/music/loss-music.mp3')
+      );
+      setSound(sound);
+      await sound.playAsync();
+    } catch (error) {
+      console.error('Error loading sound', error);
+    }
+  };
+
+  const playBattleSound = async () => {
+    try {
+      const { sound } = await Audio.Sound.createAsync(
+        require('../../assets/music/battle-music.mp3')
+      );
+      setSound(sound);
+      await sound.playAsync();
+    } catch (error) {
+      console.error('Error loading sound', error);
+    }
+  };
+
+  useEffect(() => {
+      playBattleSound();
+  }, []);
+
   const restartBattle = () => {
     setDeckBatalha(pokemonList);
     setDeckRobot([0, 1, 2, 3, 4, 5]);
     setBattleStart(false);
     setResultadoBatalha([]);
     setBattleResultMessage('');
+    playBattleSound();
   };
 
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+  
   return (
     <BackgroundImageBattle>
       <View style={styles.oponentDeckContainer}>
