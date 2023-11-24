@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, Text, FlatList, TouchableOpacity, Linking } from 'react-native';
-import { styles } from "./style"
+import { styles } from "./styles"
 import pokemon from "../../assets/images/pokemon-logo-png-1421.png"
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import imagePokemon from "../../assets/images/marcantePokemon.png"
@@ -20,7 +20,13 @@ export const About = () => {
     Linking.openURL(gitLink);
   };
 
-  const renderItem = ({item}) => (
+  interface Item {
+    id: string;
+    name: string;
+    github: string;
+  }
+
+  const renderItem = ({item}: {item:Item}) => (
     <View style={styles.nomeCreditos}>
       <View style={styles.creditos}>
         <MaterialCommunityIcons name="pokeball" size={24} color="#E04A49" />
@@ -41,7 +47,6 @@ export const About = () => {
         <View style={styles.ashContainer}>
           <Image source={imagePokemon} style={styles.ash} />
         </View>
-
         <View style={styles.agradecimentoContainer}>
           <Text style={styles.textAgradecimento}>Agradecemos por explorar o mundo Pokémon conosco! Este projeto foi possível graças à comunidade,
             aos fãs de Pokémon e à dedicação de todos os envolvidos. Esperamos que tenha uma jornada incrível
@@ -53,10 +58,8 @@ export const About = () => {
             renderItem={renderItem}
             keyExtractor={item => item.id}
             horizontal={true}
-            
           />
         </View>
-
       </View>
     </BackgroundImageHome >
   )
