@@ -4,7 +4,6 @@ export const styles = StyleSheet.create({
 	oponentDeckContainer: {
         height:"15%",
         width:"100%",
-        flexDirection:'row'
     },
     fieldContainer: {
         height:"70%",
