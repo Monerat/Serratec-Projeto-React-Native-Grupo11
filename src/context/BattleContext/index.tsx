@@ -103,7 +103,6 @@ export const BattleProvider = ({ children }: ContextProps) => {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem('historico-batalha-pokemon', jsonValue);
     } catch (e) {
-      // saving error
     }
   };
 
@@ -112,7 +111,6 @@ export const BattleProvider = ({ children }: ContextProps) => {
       const jsonValue = await AsyncStorage.getItem('historico-batalha-pokemon');
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
-      // error reading value
     }
   };
 
