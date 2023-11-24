@@ -9,8 +9,9 @@ interface ContextProps {
 
 export interface DeckContextProvider {
   pokemonList: Pokemon[],
-  addCardToDeck: (Card: Pokemon) => void,
+  addCardToDeck: (card: Pokemon) => void,
   removeCardFromDeck: (index: number) => void,
+  removeAllCardsFromDeck: () => void,
 }
 
 
@@ -80,6 +81,7 @@ export const DeckContext = createContext<DeckContextProvider>({
     ],
   }],
   removeCardFromDeck: (index: number) => { },
+  removeAllCardsFromDeck: () => { },
 });
 
 export const DeckProvider = ({ children }: ContextProps) => {
@@ -98,7 +100,6 @@ export const DeckProvider = ({ children }: ContextProps) => {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem('list-cards-deck', jsonValue);
     } catch (e) {
-      // saving error
     }
   };
 
@@ -107,7 +108,6 @@ export const DeckProvider = ({ children }: ContextProps) => {
       const jsonValue = await AsyncStorage.getItem('list-cards-deck');
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
-      // error reading value
     }
   };
 
@@ -122,16 +122,38 @@ export const DeckProvider = ({ children }: ContextProps) => {
   }
 
   function addCardToDeck(pokemon: Pokemon) {
-    if (checkPokemonDeck(pokemon.id)){
+    if (checkPokemonDeck(pokemon.id)) {
       if (pokemonList.length < 6) {
-        setPokemonList([...pokemonList, pokemon]);
-        storeData([...pokemonList, pokemon]);
-      }else{
-        Alert.alert("Número máximo de Pokémon's no Deck atingido")
+        setPokemonList((prevList) => {
+          const newList = [...prevList, pokemon];
+          storeData(newList);
+          return newList;
+        });
+      } else {
+        Alert.alert("Número máximo de Pokémon's no Deck atingido");
       }
-    }else{
-      Alert.alert("Pokémon já está adicionado no Deck")
+    } else {
+      Alert.alert("Pokémon já está adicionado no Deck");
     }
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getData();
+        if (data) {
+          setPokemonList(data);
+        }
+      } catch (error) {
+      }
+    };
+  
+    fetchData();
+  }, []);
+  
+  function removeAllCardsFromDeck() {
+    setPokemonList([]);
+    storeData([]);
   }
 
   function removeCardFromDeck(index: number) {
@@ -149,6 +171,7 @@ export const DeckProvider = ({ children }: ContextProps) => {
         pokemonList,
         addCardToDeck,
         removeCardFromDeck,
+        removeAllCardsFromDeck,
       }}
     >
       {children}
