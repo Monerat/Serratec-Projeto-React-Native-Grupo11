@@ -81,7 +81,6 @@ export const BattleContext = createContext<BattleContextProvider>({
           ],
         }]
       },],
-
     addBatalha: (batalha: ResultadoBatalhaProps) => { },
     idBatalha:0
 });

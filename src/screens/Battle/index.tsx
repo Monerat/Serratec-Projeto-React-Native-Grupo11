@@ -22,6 +22,7 @@ export const Battle = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { pokemonList } = useContext(DeckContext)
   const { idBatalha } = useContext(BattleContext)
+  const [idBatalhaAtual, setIdBatalhaAtual] = useState<number>(idBatalha);
   const [deckBatalha, setDeckBatalha] = useState<Pokemon[]>(pokemonList);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [statusEscolhido, setStatusEscolhido] =useState<string>('');
@@ -63,16 +64,18 @@ export const Battle = () => {
     });
     if(count>2){
       addBatalha({
-        id: idBatalha+1,
+        id: idBatalhaAtual,
         resultado: 'Win',
         deck: pokemonList
       })
+      setIdBatalhaAtual(idBatalhaAtual+1)
     }else{
       addBatalha({
-        id: idBatalha+1,
+        id: idBatalhaAtual,
         resultado: 'Loss',
         deck: pokemonList
       })
+      setIdBatalhaAtual(idBatalhaAtual+1)
     }
   }
   return (
