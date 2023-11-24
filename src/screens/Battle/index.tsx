@@ -16,7 +16,7 @@ export const Battle = () => {
   const [deckBatalha, setDeckBatalha] = useState<Pokemon[]>(pokemonList);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [statusEscolhido, setStatusEscolhido] =useState<string>('');
-  const [deckRobot, setDeckRobot] = useState<number[]>([0,1,2,3,4,5]);
+  const [deckRobot, setDeckRobot] = useState<number[]>([0, 1, 2, 3, 4, 5]);
   const [selectedId, setSelectedId] = useState<number>(0);
   const [battleStart, setBattleStart] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<PokemonListProps>({
@@ -25,18 +25,29 @@ export const Battle = () => {
   });
   
   function removeCard(id: number) {
-		setDeckBatalha(oldState=>oldState.filter(
-			deckBatalha => deckBatalha.id !== id
-		))
-	}
+    setDeckBatalha((oldState) =>
+      oldState.filter((deckBatalha) => deckBatalha.id !== id)
+    );
+  
+    setDeckRobot((oldDeckRobot) => {
+      const newDeckRobot = [...oldDeckRobot];
+      newDeckRobot.pop();
+      return newDeckRobot;
+    });
+  }
 
   return (
     <BackgroundImageBattle>
       <View style={styles.oponentDeckContainer}>
         <FlatList
-        data={deckRobot}
-        horizontal={true}
-        renderItem={()=>{return <CardBack/>}}
+          data={deckRobot}
+          horizontal={true}
+          renderItem={({ item }) => (
+            <View style={styles.cardContainer}>
+              <CardBack />
+            </View>
+          )}
+          keyExtractor={(item, index) => index.toString()}
         />
       </View>
       <View style={styles.fieldContainer}>
