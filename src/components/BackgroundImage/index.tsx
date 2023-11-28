@@ -56,6 +56,7 @@ export const BackgroundImage: React.FC<BackgroundImageProps> = ({ children, poke
     source={switchBackgroundImg(pokemonType)}
     style={styles.backgroundImage}
   >
+  <Text>asdasd</Text>
     {children}
   </ImageBackground>
 );
