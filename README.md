@@ -29,9 +29,9 @@ Montar um app com tudo que foi aprendido nas aulas.
 
 ### Como Rodar
 
-install node
-npm i
-npm install expo@latest
-npx expo install --fix
-npx expo start
-open using the QR code on the Expo app on your smartphone
+- install node
+- npm i
+- npm install expo@latest
+- npx expo install --fix
+- npx expo start
+- open using the QR code on the Expo app
